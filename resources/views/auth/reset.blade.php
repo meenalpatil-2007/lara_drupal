@@ -1,4 +1,7 @@
-  {!! Form::open(array('url' => '/password/reset', 'class' => 'form-horizontal')) !!}
+<!-- resources/views/auth/reset.blade.php -->
+
+<form method="POST" action="/password/reset">
+    {!! csrf_field() !!}
     <input type="hidden" name="token" value="{{ $token }}">
 
     @if (count($errors) > 0)
