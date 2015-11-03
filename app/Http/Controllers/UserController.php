@@ -15,10 +15,9 @@ class UserController extends Controller
 
     public function __construct(Request $request)
 	{
-	    # $this->middleware('auth');
+	    $this->middleware('custom');
 		$this->site_url = config('config.SITE_URL');
 		$this->request = $request;
-
 	}
 
 	public function getLogin() {
@@ -26,24 +25,21 @@ class UserController extends Controller
 	}
 
 	public function postLogin() {
-		echo "in postlogin";
 		$input = $this->request->all();
 		Common::pr($input);
-		echo $this->site_url;
+		echo $url = $this->site_url;	//.'m2serve/user/login';
 
-		// $ch = curl_init("http://www.google.co.in");
 		$ch = curl_init();
-		$url = $this->site_url.'m2serve/user/login';
-		// $fp = fopen("example_homepage.txt", "w");
 
 		// curl_setopt($ch, CURLOPT_FILE, $fp);
-		curl_setopt($ch, CURLOPT_URL, $url); 
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.16 (KHTML, like Gecko) \ Chrome/24.0.1304.0 Safari/537.16');
+		//curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
 		$output = curl_exec($ch);
 		curl_close($ch);
-		// /echo $output;
+		echo $output;
 	}
 
 	public function getLogout() {
