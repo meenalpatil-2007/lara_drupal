@@ -18,4 +18,8 @@ class ProfileController extends Controller
 		echo "in getprog";
 	}
 
+	function getHome() {
+		echo "in home";
+	}
+
 }
