@@ -27,11 +27,12 @@ class Custom
     public function handle($request, Closure $next)
     {
         //if ($this->auth->guest()) {
-        if ($request->session()->has('users') && !is_null($request->session()->get('users'))) {
+        if (is_null($request->session()->get('user'))) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('users/login');
+                //return redirect()->action('UserController@getLogin');
+                //return redirect('login');
             }
         }
 
