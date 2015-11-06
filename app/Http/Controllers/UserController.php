@@ -80,7 +80,7 @@ class UserController extends Controller
 		$userData = $this->request->all();
 		unset($userData['_token']);
 		//Common::pr($userData);die;
-		$userData = ['name' => $userData['username'], 'mail' => $userData['email'], 'pass1' => $userData['password'], 'pass2' => $userData['password'], 'roles' => [2], 'status' => 1];
+		$userData = ['name' => $userData['username'], 'mail' => $userData['email'], 'init' => $userData['email'], 'status' => 1, 'sessid' => 'SESSb1cbc91a32a83d8f1412714baa80c0b1', 'session_name' => '9SVGC_JZmbzOWi7cTg6gkznKPRn0uf2b-sWCOd4WFpc', 'pass' => ['pass1' => $userData['password'], 'pass2' => $userData['password']],  'roles' => [2]];
 		$result = $this->cURL($url, $userData);
 		Common::pr($result);die;
 	}
