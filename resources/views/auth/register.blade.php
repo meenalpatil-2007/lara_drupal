@@ -15,11 +15,8 @@
         <label for="inputEmail" class="sr-only">Email address</label>
         {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email address', 'required', 'autofocus', 'id' => 'inputEmail' ]) !!}
  
-        <label for="inputFirstName" class="sr-only">First name</label>
-        {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'First name', 'required', 'id' => 'inputFirstName' ]) !!}
- 
-        <label for="inputLastName" class="sr-only">Last name</label>
-        {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Last name', 'required', 'id' => 'inputLastName' ]) !!}
+        <label for="inputUsername" class="sr-only">Username</label>
+        {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required', 'autofocus', 'id' => 'inputUsername' ]) !!}
  
  
         <label for="inputPassword" class="sr-only">Password</label>
