@@ -32,7 +32,7 @@ class Custom
                 return response('Unauthorized.', 401);
             } else {
                 //return redirect()->action('UserController@getLogin');
-                //return redirect('login');
+                //return View('auth.login');
             }
         }
 

@@ -16,13 +16,13 @@
         {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password', 'required',  'id' => 'inputPassword' ]) !!}
  
         <div class="checkbox">
-            <label>
+            <!--label>
                 {!! Form::checkbox('remember', 1) !!} Remember me
  
-            </label>
+            </label-->
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p><a href="#">Forgot password?</a></p>
+        <button class="btn btn-lg btn-primary btn-block" id="signin" type="submit">Sign in</button>
+        <!--p><a href="#">Forgot password?</a></p-->
  
         <!--p class="or-social">Or Use Social Login</p-->
  

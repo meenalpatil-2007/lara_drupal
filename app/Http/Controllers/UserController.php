@@ -21,36 +21,43 @@ class UserController extends Controller
 		$this->request = $request;
 	}
 
-	public function getLogin(Request $request) {
+	public function getLogin(Request $request) 
+	{
 		if ($request->session()->get('user'))
 		{
 			$request->session()->flash('message', "Please logout first.");
 			return redirect('/');
 		}
 		else {
-			return view('auth.login');
+			return view('auth.login', compact($this));
 		}
 		
 	}
 
-	public function postLogin(Request $request) {
+	public function postLogin(Request $request) 
+	{
 		$url = $this->site_url	.'/m2serve/user/login';
 		$userData = ['username' => $this->request->all()['username'], 'password' => $this->request->all()['password']];
 		list($http_code, $output) = $this->cURL($url, $userData);
-		Common::pr($output);
+		
+		$xml = simplexml_load_string($output);
+		$json = json_encode($xml);
+		$array = json_decode($json,TRUE);
+
 		if ($http_code == 200)
 		{
-			$cookie_session = $output->session_name . '=' . $output->sessid;
-			$request->session()->put('email', $output->user->mail);
-			$request->session()->put('name', $output->user->name);
-			$request->session()->put('_token', $output->token);
+			setcookie($array['session_name'], $array['sessid']);
+			$cookie_session = "Cookie: ". $array['session_name'] . '=' . $array['sessid'];
+			$request->session()->put('email', $array['user']['mail']);
+			$request->session()->put('name', $array['user']['name']);
+			$request->session()->put('_token', $array['token']);
 			$request->session()->put('cookie', $cookie_session);
-			$request->session()->put('user', $output);
+			$request->session()->put('user', $array);
 			return redirect('/');
 		}
 		else 
 		{
-			$request->session()->flash('message', $output[0]);
+			$request->session()->flash('message', $array[0]);
 			return redirect()->back();
 		}
 		
@@ -61,28 +68,35 @@ class UserController extends Controller
 	{
 		$url = $this->site_url	.'/m2serve/user/logout';
 		$userData = '';	
-		//Common::pr($data);die;
-		$result = $this->cURL($url, $userData);
+		$result = $this->cURL($url, $userData, $request->session()->get('cookie'));
 		
-		//Common::pr($result);die;
 		$request->session()->forget('user');
 		$request->session()->flush();
 		$request->session()->flash('message', "You have successfully logged out.");
 		return redirect('/');
 	}
 
-	public function getRegister() {
+	public function getRegister() 
+	{
 		return view('auth.register');
 	}
 
-	public function postRegister(Request $request) {
+	public function postRegister(Request $request) 
+	{
 		$url = $this->site_url	.'/m2serve/user/register';
 		$userData = $this->request->all();
 		unset($userData['_token']);
-		//Common::pr($userData);die;
-		$userData = ['name' => $userData['username'], 'mail' => $userData['email'], 'init' => $userData['email'], 'status' => 1, 'sessid' => 'SESSb1cbc91a32a83d8f1412714baa80c0b1', 'session_name' => '9SVGC_JZmbzOWi7cTg6gkznKPRn0uf2b-sWCOd4WFpc', 'pass' => ['pass1' => $userData['password'], 'pass2' => $userData['password']],  'roles' => [2]];
+		$userData = ['name' => $userData['username'], 
+					 'mail' => $userData['email'], 
+					 //'init' => $userData['email'], 
+					 'status' => 1, 
+					 'pass' => ['pass1' => $userData['password'], 
+					 			'pass2' => $userData['password']],  
+					 'roles' => [2]
+					];
 		$result = $this->cURL($url, $userData);
-		Common::pr($result);die;
+		$this->postLogin($this->request);
+		return redirect('/');
 	}
 
 }

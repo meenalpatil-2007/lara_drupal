@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
- 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <title>Matrimonial.com!</title>
  
     <!-- Bootstrap core CSS -->
@@ -65,7 +65,7 @@
  
 <div class="container">
     @if (Session::has('message'))
-        <div class="alert alert-info">{{ Session::get('message') }}</div>
+        <div class="alert alert-info">{!! Session::get('message') !!}</div>
     @endif
  
     @yield('content')
@@ -76,9 +76,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 {!! Html::script('/assets/plugins/bootstrap/js/bootstrap.min.js') !!}
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 {!! Html::script('/assets/js/ie10-viewport-bug-workaround.js') !!}
+<!--script src="/node_modules/angular/angular.js"></script-->
 </body>
 </html>
