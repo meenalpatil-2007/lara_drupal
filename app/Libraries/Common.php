@@ -10,6 +10,19 @@ class Common {
 		echo "</pre>";
 	}
 
+	static function appendParamToUrl($url, $input) {
+		foreach ($input as $key => $value) {
+			$query = parse_url($url, PHP_URL_QUERY);
+			// Returns a string if the URL has parameters or NULL if not
+			if ($query) {
+				$url .= '&'.$key.'='.$value;
+			} else {
+				$url .= '?'.$key.'='.$value;
+			}
+		}
+		return $url;
+	}
+
 	static function timeAgo() {
 		$SECOND = 1;
 		$MINUTE = 60 * $SECOND;
