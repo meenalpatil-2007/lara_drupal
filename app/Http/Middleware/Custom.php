@@ -26,16 +26,10 @@ class Custom
      */
     public function handle($request, Closure $next)
     {
-        //if ($this->auth->guest()) {
-        if (is_null($request->session()->get('user'))) {
-            if ($request->ajax()) {
-                return response('Unauthorized.', 401);
-            } else {
-                //return redirect()->action('UserController@getLogin');
-                //return View('auth.login');
-            }
+        if (($request->session()->has('user')) && $request->is('login') || $request->is('register/')) {
+            return redirect('/');
         }
-
+        
         return $next($request);
     }
 }

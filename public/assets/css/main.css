@@ -97,6 +97,13 @@ a:hover {
   color: #fff;
   padding: 8px 15px;
 }
+
+ .menu-open a,
+ .menu-open a:hover {
+  color: #777 !important;
+}
+
+
 .navbar-default .navbar-nav > .active,
 .navbar-default .navbar-nav li:hover {
   color: #fff;
@@ -123,10 +130,8 @@ a:hover {
   background: #333;
 }
 #hero-area {
-  background: url(../plugins/bootstrap/img/backgrounds/shaadi-bg.jpg) ; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: url(../plugins/bootstrap/img/backgrounds/shaadi-bg.jpg)  no-repeat center; 
+  background-size: cover;
   color: #fff;
   height: 100%;
 }
@@ -186,8 +191,11 @@ a:hover {
   margin-top: 20px;
 }
 #features {
-  background: url(../plugins/bootstrap/img/backgrounds/feature-bg.jpg);
-  background-size: cover;
+  background: url(../plugins/bootstrap/img/backgrounds/feature-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
   overflow: hidden;
   position: relative;
 }
