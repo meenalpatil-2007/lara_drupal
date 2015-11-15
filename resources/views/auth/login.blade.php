@@ -5,29 +5,43 @@
 @stop
 
 @section('content')
-{!! Form::open(['action' => 'UserController@postLogin', 'class' => 'form-signin']  ) !!}
- 
-        
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputUsername" class="sr-only">Username</label>
-        {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required', 'autofocus', 'id' => 'inputUsername' ]) !!}
-        
-        <label for="inputPassword" class="sr-only">Password</label>
-        {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password', 'required',  'id' => 'inputPassword' ]) !!}
- 
-        <div class="checkbox">
-            <!--label>
-                {!! Form::checkbox('remember', 1) !!} Remember me
- 
-            </label-->
+    <section id="hero-area">
+        <div class="hero-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1 class="title-big wow fadeIn"><i class="fa fa-sign-in"></i></h1>
+                        <h2 class="subtitle">Sign-in to access your account</h2>
+                    </div>
+                    {!! Form::open(['action' => 'UserController@postLogin', 'class' => 'form-signin', 'role' => 'form']  ) !!}
+                             <div class="wow fadeInDown">
+                                <label for="inputUsername" class="sr-only">Username</label>
+                                {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required', 'autofocus', 'id' => 'inputUsername' ]) !!}
+                            </div>
+
+                            <div class="wow fadeInDown" data-wow-delay=".7s">
+                                <label for="inputPassword" class="sr-only">Password</label>
+                                {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password', 'required',  'id' => 'inputPassword' ]) !!}
+                            </div>
+
+                            <div class="checkbox">
+                                <!--label>
+                                    {!! Form::checkbox('remember', 1) !!} Remember me
+                     
+                                </label-->
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block wow fadeInUp"  data-wow-delay="1s" id="signin" type="submit">Sign in</button>
+                            <!--p><a href="#">Forgot password?</a></p-->
+                     
+                            <!--p class="or-social">Or Use Social Login</p-->
+                     
+                            <!--a href="#" class="btn btn-lg btn-primary btn-block facebook" type="submit">Facebook</a>
+                            <a href="#" class="btn btn-lg btn-primary btn-block twitter" type="submit">Twitter</a-->
+                     
+                    {!! Form::close() !!}   
+                </div>
+            </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" id="signin" type="submit">Sign in</button>
-        <!--p><a href="#">Forgot password?</a></p-->
- 
-        <!--p class="or-social">Or Use Social Login</p-->
- 
-        <!--a href="#" class="btn btn-lg btn-primary btn-block facebook" type="submit">Facebook</a>
-        <a href="#" class="btn btn-lg btn-primary btn-block twitter" type="submit">Twitter</a-->
- 
-        {!! Form::close() !!}                   
+    </section>                                
 @endsection

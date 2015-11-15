@@ -34,6 +34,13 @@ class UserController extends Controller
 		
 	}
 
+	public function getWhyMatrimony(Request $request) 
+	{
+		
+		return view('whyMatrimony', compact($this));
+		
+	}
+
 	public function postLogin(Request $request) 
 	{
 		$url = $this->site_url	.'/m2serve/user/login';

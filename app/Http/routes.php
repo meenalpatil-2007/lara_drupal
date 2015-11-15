@@ -12,8 +12,10 @@
 */
 //echo "dfdfdf";exit;
 Route::get('/' , function () {
-    return view('app');
+    return view('auth.register');
 });
+
+
 
 Route::controller('', 'UserController');
 Route::controller('profile', 'ProfileController');
