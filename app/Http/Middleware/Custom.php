@@ -29,6 +29,9 @@ class Custom
         if (($request->session()->has('user')) && $request->is('login') || $request->is('register/')) {
             return redirect('/');
         }
+        else if (is_null($request->session()->has('user')) && $request->is('/')) {
+            return redirect('register');
+        }
         
         return $next($request);
     }
