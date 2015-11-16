@@ -12,7 +12,7 @@
 */
 //echo "dfdfdf";exit;
 Route::get('/' , function () {
-    return view('auth.register');
+    return view('app');
 });
 
 
