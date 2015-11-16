@@ -23,9 +23,7 @@ class UserController extends Controller
 
 	public function getLogin(Request $request) 
 	{
-		//$class = 'active';
-		//View::share('class', $title);
-		return view('auth.login');
+		return view('auth.login', array('login' => 'active'));
 	}
 
 	
@@ -74,7 +72,7 @@ class UserController extends Controller
 
 	public function getRegister() 
 	{
-		return view('auth.register');
+		return view('auth.register', array('register' => 'active'));
 	}
 
 	public function postRegister(Request $request) 

@@ -23,8 +23,8 @@
                         </ul>
                     </li>
                 @else
-                    <li ><a href="login" >Sign In</a></li>
-                    <li class="active"><a href="register">Sign up</a></li>
+                    <li class="{{ $login or '' }}"><a href="login" >Sign In</a></li>
+                    <li class="{{ $register or '' }}"><a href="register">Sign up</a></li>
                     <!--li><a href="why-matrimony">Why Matrimonial.com</a></li-->
                 @endif
             </ul>

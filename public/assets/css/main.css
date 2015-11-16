@@ -134,6 +134,7 @@ a:hover {
   background-size: cover;
   color: #fff;
   height: 100%;
+  margin-top: 90px;
 }
 #hero-area .btn {
   margin-right: 20px;
@@ -146,7 +147,7 @@ a:hover {
   padding: 50px 0;
 }
 #hero-area .row, #myModal {
-  padding: 200px 0;
+  padding: 100px 0;
 }
 .hero-inner {
   position: relative;
@@ -160,7 +161,7 @@ a:hover {
   width: 100%;
   top: 0;
   bottom: 0;
-  content: "center";
+  content: "";
   display: block;
 
 }
