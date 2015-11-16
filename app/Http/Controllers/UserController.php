@@ -23,7 +23,9 @@ class UserController extends Controller
 
 	public function getLogin(Request $request) 
 	{
-		return view('auth.login', compact($this));
+		//$class = 'active';
+		//View::share('class', $title);
+		return view('auth.login', compact([$class]));
 	}
 
 	

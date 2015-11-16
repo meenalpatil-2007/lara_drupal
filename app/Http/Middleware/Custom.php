@@ -26,10 +26,10 @@ class Custom
      */
     public function handle($request, Closure $next)
     {
-        if (($request->session()->has('user')) && $request->is('login') || $request->is('register/')) {
+        if (($request->session()->has('user')) && ($request->is('login') || $request->is('register'))) {
             return redirect('/');
         }
-        else if (is_null($request->session()->has('user')) && $request->is('/')) {
+        else if (!$request->session()->has('user') && $request->is('/')) {
             return redirect('register');
         }
         
