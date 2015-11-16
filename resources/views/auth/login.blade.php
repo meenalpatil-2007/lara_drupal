@@ -5,7 +5,6 @@
 @stop
 
 @section('content')
-{{ $class }}
     <section id="hero-area">
         <div class="hero-inner">
             <div class="container">
