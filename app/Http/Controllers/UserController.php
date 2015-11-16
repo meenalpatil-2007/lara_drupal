@@ -23,15 +23,7 @@ class UserController extends Controller
 
 	public function getLogin(Request $request) 
 	{
-		if ($request->session()->get('user'))
-		{
-			$request->session()->flash('message', "Please logout first.");
-			return redirect('/');
-		}
-		else {
-			return view('auth.login', compact($this));
-		}
-		
+		return view('auth.login', compact($this));
 	}
 
 	
