@@ -71,7 +71,5 @@
     <!-- All JS plugin Triggers -->
     {!! Html::script('/assets/plugins/bootstrap/js/main.js') !!}
 
-    {!! Html::script('/assets/plugins/bootstrap/js/metro.js') !!}
-
 </body>
 </html>
