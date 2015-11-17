@@ -37,7 +37,6 @@ class UserController extends Controller
 		$xml = simplexml_load_string($output);
 		$json = json_encode($xml);
 		$array = json_decode($json,TRUE);
-
 		if ($http_code == 200)
 		{
 			setcookie($array['session_name'], $array['sessid']);
