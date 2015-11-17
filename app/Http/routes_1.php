@@ -11,11 +11,13 @@
 |
 */
 //echo "dfdfdf";exit;
+// Route::get('user/{name}/support', function ($name) {
+//     echo $name;
+// });
 Route::get('/' , function () {
     return view('app');
 });
 
-
-
+Route::controller('user', 'UserController');
 Route::controller('profile', 'ProfileController');
-Route::controller('', 'UserController');
+
