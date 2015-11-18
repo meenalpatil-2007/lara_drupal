@@ -17,6 +17,7 @@ Route::get('/' , function () {
 
 
 
+
 Route::controller('profile', 'ProfileController');
 Route::controller('', 'UserController');
 Route::controller('', 'HomeController');
