@@ -1,6 +1,6 @@
 .list-content{
 min-height:300px;
-float:left;
+padding-top: 70px;
 }
 .list-content .list-group .title{
   background:#5bc0de;
@@ -26,8 +26,9 @@ float:left;
     width:100%;
     margin:20px;
 }
-.name {
+.name, a.name:hover {
     color:#5bc0de;    
+    text-decoration: none;
 }
 
 .img-thumbnail {
