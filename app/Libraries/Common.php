@@ -23,6 +23,13 @@ class Common {
 		return $url;
 	}
 
+	static function validateCurlResponse($response) {
+		if($response[0] !== 200) {
+			return view('errors.SWW');
+		} else 
+		return $response[1];
+	}
+
 	static function timeAgo() {
 		$SECOND = 1;
 		$MINUTE = 60 * $SECOND;
