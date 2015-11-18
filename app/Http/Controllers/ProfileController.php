@@ -28,13 +28,14 @@ class ProfileController extends Controller
 		
 		$result = $this->cURL($url, $userData, $this->request->session()->get('cookie'), 'GET');
 		$res = Common::validateCurlResponse($result);
+
+
 		if(is_object($res)) {
 			return $res;
 		} else {
 			//combine=aks&field_gender_value=female&field_religion_value=All&field_living_location_value%5B%5D=mumbai
 			$response = json_decode($res);
-			Common::pr($response);
-			return view('pages.search', array('userData' => $userData));
+			return view('pages.search', array('userData' => $userData, 'response' => $response));
 		}
 	}
 }

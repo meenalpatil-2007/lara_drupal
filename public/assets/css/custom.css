@@ -1,0 +1,32 @@
+img {
+    max-width: 110%;
+    height: auto;      
+}
+
+.clearfix {
+    clear:both;
+}
+
+.rowcolor {
+    background-color:#CCCCCC;
+}
+
+.padall {
+    padding:10px;
+}
+
+.icon {
+    font-size:23px;
+    color:#197BB5;
+}
+
+.page_header {
+	padding-top:90px;
+	text-align:center;
+}
+
+.header_image {
+	width: 33px;
+	height: 27px;
+	margin:8px;
+}
