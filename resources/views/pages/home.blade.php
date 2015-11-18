@@ -7,6 +7,7 @@
 
 @section('content')
 <div class="container bootstrap snippet">
+test
 	<div class="row">
 	<div class="jumbotron list-content">
     <ul class="list-group">
