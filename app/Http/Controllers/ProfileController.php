@@ -7,7 +7,6 @@ use App\Api\WebService;
 
 class ProfileController extends Controller
 {
-
 	use WebService;
 
     public function __construct(Request $request)
@@ -23,14 +22,19 @@ class ProfileController extends Controller
 
 	function getSearch() {
 		// Pagination - https://www.drupal.org/node/905440
-
 		$userData = $this->request->all();
 		$url = $this->site_url	.'m2serve/view_test3_service';
 		$url = Common::appendParamToUrl($url, $userData);
 		
-		echo $url;
 		$result = $this->cURL($url, $userData, $this->request->session()->get('cookie'), 'GET');
-		Common::pr($result);
+		$res = Common::validateCurlResponse($result);
+		if(is_object($res)) {
+			return $res;
+		} else {
+			//combine=aks&field_gender_value=female&field_religion_value=All&field_living_location_value%5B%5D=mumbai
+			$response = json_decode($res);
+			Common::pr($response);
+			return view('pages.search', array('userData' => $userData));
+		}
 	}
-
 }

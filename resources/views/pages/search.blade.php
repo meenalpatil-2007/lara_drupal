@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-<?php echo 'hello'; print_r($userData); ?>
 {!! Form::open(['action' => 'ProfileController@getSearch', 'class' => 'form-signin', 'role' => 'form', 'method' => 'get']  ) !!}
 	<div class="views-exposed-widgets clearfix">
 		<div id="edit-combine-wrapper" class="views-exposed-widget views-widget-filter-combine">
@@ -18,7 +17,7 @@
 				<div class="form-item form-type-select form-item-field-gender-value">
 					<select id="edit-field-gender-value" name="field_gender_value" class="form-select">
 						<?php 
-							$selected = $userData['field_gender_value'];
+							$selected = isset($userData['field_gender_value'])?$userData['field_gender_value']:'All';
 							$selAll = $selm = $self = '';
 							if($selected == 'All') $selAll = "selected='selected'";
 							if($selected == 'male') $selm = "selected='selected'";
@@ -36,7 +35,7 @@
 			<div class="views-widget">
 				<div class="form-item form-type-select form-item-field-religion-value">
 					<select id="edit-field-religion-value" name="field_religion_value" class="form-select">
-						<?php $rel = $userData['field_religion_value'];
+						<?php $rel = isset($userData['field_religion_value'])?$userData['field_religion_value']:'All';
 							$relAll = $relH = $relM = $relC = $relS = '';
 							if($rel == 'All') $relAll = "selected='selected'";
 							if($rel == 'hindu') $relH = "selected='selected'";
@@ -57,22 +56,22 @@
 			<label for="edit-field-living-location-value">Location</label>
 			<div class="views-widget">
 				<div class="form-item form-type-select form-item-field-living-location-value">
-					<select multiple="multiple" name="field_living_location_value[]" id="edit-field-living-location-value" size="4" class="form-select">
+					<select name="field_living_location_value" id="edit-field-living-location-value" size="4" class="form-select">
 						<option value="mumbai">Mumbai</option>
 						<option value="pune">Pune</option>
 						<option value="banglore">Banglore</option>
-						<option value="gujarat">Gujarat</option></select>
+						<option value="gujarat">Gujarat</option>
+					</select>
 				</div>
 			</div>
 		</div>
 		<div class="views-exposed-widget views-submit-button">
-			<input class="ctools-use-ajax ctools-auto-submit-click js-hide form-submit" type="submit" id="edit-submit-test3" name="" value="Apply"></div>
-				<div class="views-exposed-widget views-reset-button">
-			<input type="submit" id="edit-reset" name="op" value="Reset" class="form-submit">      </div>
+			<input class="ctools-use-ajax ctools-auto-submit-click js-hide form-submit" type="submit" id="edit-submit-test3" name="" value="Apply">
+		</div>
+		<div class="views-exposed-widget views-reset-button">
+			<input type="submit" id="edit-reset" name="op" value="Reset" class="form-submit">
 		</div>
 	</div>
 {!! Form::close() !!}
-
-
 
 @endsection
