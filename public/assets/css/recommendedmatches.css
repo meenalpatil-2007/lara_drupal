@@ -1,0 +1,66 @@
+.list-content{
+min-height:300px;
+float:left;
+}
+.list-content .list-group .title{
+  background:#5bc0de;
+  border:2px solid #DDDDDD;
+  font-weight:bold;
+  color:#FFFFFF;
+  text-align: center;
+
+}
+.list-group-item img {
+    height:80px; 
+    width:80px;
+}
+
+.jumbotron .btn {
+    padding: 5px 5px !important;
+    font-size: 12px !important;
+}
+.prj-name {
+    color:#5bc0de;    
+}
+.break{
+    width:100%;
+    margin:20px;
+}
+.name {
+    color:#5bc0de;    
+}
+
+.img-thumbnail {
+    overflow:hidden;
+    border-radius:60%;
+}
+
+
+.heart-divider {
+    text-align: center;
+}
+.grey-line {
+    width: 30px;
+    height: 8px;
+    display: inline-block;
+    border-top: solid 2px #e1dddd;
+}
+.pink-heart {
+    color:#c32143;
+    font-size: 18px;
+    position: relative;
+    z-index: 3;
+}
+.grey-heart {
+    color: #e1dddd;
+    font-size: 18px;
+    margin-left: -15px;
+    position: relative;
+    z-index: 2;
+}
+.grey-line {
+    width: 30px;
+    height: 8px;
+    display: inline-block;
+    border-top: solid 2px #e1dddd;
+}
