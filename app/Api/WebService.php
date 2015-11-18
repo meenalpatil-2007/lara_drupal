@@ -32,15 +32,12 @@ trait WebService
 	  curl_setopt_array($curl_get, array(
 	    CURLOPT_RETURNTRANSFER => 1,
 	    CURLOPT_POST => 1,
-	    CURLOPT_URL => $this->site_url. '/m2serve/user/token',
+	    CURLOPT_URL => $this->site_url. 'services/session/token',
 	    CURLOPT_HTTPHEADER => array('Content-Type: application/json;')
 	  ));
-	  $csrf_token = curl_exec($curl_get);
-	  $xml = simplexml_load_string($csrf_token);
-	  $json = json_encode($xml);
-	  $array = json_decode($json,TRUE);
+	  $token = curl_exec($curl_get);
 	  curl_close($curl_get);
-	  return 'X-CSRF-Token: ' . $array['token'];
+	  return 'X-CSRF-Token: ' . $token;
 	}
 
 }

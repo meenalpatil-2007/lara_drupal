@@ -34,9 +34,7 @@ class UserController extends Controller
 		$userData = ['username' => $this->request->all()['username'], 'password' => $this->request->all()['password']];
 		list($http_code, $output) = $this->cURL($url, $userData);
 		
-		$xml = simplexml_load_string($output);
-		$json = json_encode($xml);
-		$array = json_decode($json,TRUE);
+		$array = json_decode($output,TRUE);
 		if ($http_code == 200)
 		{
 			setcookie($array['session_name'], $array['sessid']);
