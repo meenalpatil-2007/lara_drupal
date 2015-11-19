@@ -12,7 +12,8 @@
 */
 //echo "dfdfdf";exit;
 Route::get('/' , function () {
-    return view('app');
+    //return view('auth.register', array('register' => 'active'));
+    return view('pages.home');
 });
 
 
@@ -21,5 +22,6 @@ Route::get('/' , function () {
 // Route::get('edit-profile' ,'ProfileController@showProfile');
 
 Route::controller('profile', 'ProfileController');
-Route::controller('home', 'HomeController');
-Route::controller('', 'UserController');
+Route::controller('user', 'UserController');
+Route::controller('', 'HomeController');
+

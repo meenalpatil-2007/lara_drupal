@@ -1,7 +1,6 @@
 
 
 
-<div class="list-content">
 		    <ul class="list-group">
 		      	<li  class="list-group-item title">
 			        Recommended Matches 
@@ -15,7 +14,7 @@
 			    @foreach ($profiles as $profile)
 			      	<li  class="list-group-item text-left">
 				      	<a href="#" class="name">
-				      	{!! $profile['profile img'] !!}
+				      	{!! $profile['field_profile_img'] !!}
 					        <span>{{ $profile['field_first_name'] }} {{ $profile['last name'] }}</span>
 				      	</a>
 				        <!--label class="pull-right">
@@ -51,5 +50,4 @@
 			        </a>
 			    </li>
 		    </ul>
-		</div>
 

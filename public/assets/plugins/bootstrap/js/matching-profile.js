@@ -1,10 +1,10 @@
 $( document ).ready(function() {
 	$('#loadMore').click( function () {
 		$.ajax({
-		  url: "/profile/matching-profile",
-		  context: document.body
+			type: "GET",
+			url: "/matching-profile",
 		}).done(function(data) {
-			alert(data);
+			$('#list-content').html(data);
 		});
 	});
 });

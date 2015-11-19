@@ -15,18 +15,19 @@ class HomeController extends Controller
 
 	public function __construct(Request $request)
 	{
+		$this->middleware('custom');
 		$this->site_url = config('config.SITE_URL');
 		$this->request = $request;
 	}
 
     public function getIndex() {
-    	$profiles = $this->matchingProfile();
-    	//dd($profiles);
+    	$profiles = $this->getMatchingProfile();
     	return view('pages.home', array('profiles' => $profiles));
     }
 
 
-    public function matchingProfile () {
+    public function getMatchingProfile () {
+    	
     	$url = $this->site_url	.'/m2serve/view_recommended_matches_service?user='.$this->request->session()->get('uid');		
 		
 		$result = $this->cURL($url, Null, $this->request->session()->get('cookie'), 'GET');	
@@ -38,13 +39,15 @@ class HomeController extends Controller
 		else {
 			$array = json_decode($output,TRUE);
 		}
-		
-		if (!empty($array)) {
-			return $array;
+
+		if ($this->request->ajax())
+		{
+		   return view('profile.matching_profile', array('profiles' => $array));exit;
 		}
 		else {
-			return dd("No matching profile");
+			return $array;
 		}
+		
 	}
 
 }
