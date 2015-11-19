@@ -46,7 +46,7 @@ class Common {
 		return $url;
 	}
 
-	static function truncateToLength($phrase, $max_words=20) {
+	static function truncateToLength($phrase, $max_words=30) {
 		$phrase_array = explode(' ',$phrase);
 		if(count($phrase_array) > $max_words && $max_words > 0)
 			$phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...';
@@ -74,7 +74,7 @@ class Common {
 
 		if($paginationData['totalPages'] > 1) {
 			$url = $paginationData['url'];
-			$returnStr .= '<div class="pagination_class"><ul class = "pagination pagination-lg">';
+			$returnStr .= '<div class="pagination_class"><ul class = "pagination">';
 			for($i = 0; $i < $paginationData['totalPages']; $i++) { 
 				$class = '';
 				if($paginationData['currPage']-1 == $i) {

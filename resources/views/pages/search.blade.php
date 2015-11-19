@@ -8,19 +8,19 @@
 </div>
 {!! Form::open(['action' => 'ProfileController@getSearch', 'class' => 'form-inline', 'role' => 'form', 'method' => 'get', 'id' => 'profile_search_form']  ) !!}
 	<div class="row" style="padding:10px;">
-		<div class="col-xs-6">
-			<label for="edit-combine">Name</label>
+		<div class="col-xs-3">
+			<label for="edit-combine">Name</label><br/>
 			<input type="text" id="edit-combine" name="combine" value="<?php echo isset($userData['combine'])?$userData['combine']:'' ?>" size="30" maxlength="128" class="form-control form-text ctools-auto-submit-processed">
 		</div>
-		<div class="col-xs-6">
-			<label for="edit-field-living-location-value">Location</label>
+		<div class="col-xs-3">
+			<label for="edit-field-living-location-value">Location</label><br/>
 			<input type="text" id="edit-field_living_location_value" name="field_living_location_value" value="<?php echo isset($userData['field_living_location_value'])?$userData['field_living_location_value']:'' ?>" size="30" maxlength="128" class="form-control form-text ctools-auto-submit-processed">
 		</div>
-	</div>
-	<div class="row" style="padding:10px;">
-		<div class="col-xs-6">
-			<label for="edit-field-gender-value">Gender</label>
-			<select id="edit-field-gender-value" name="field_gender_value" class="form-control form-select">
+	<!--/div-->
+	<!--div class="row" style="padding:10px;"-->
+		<div class="col-xs-3">
+			<label for="edit-field-gender-value">Gender</label><br/>
+			<select id="edit-field-gender-value" name="field_gender_value" class="form-control form-select" style="width:100%;">
 				<?php 
 					$selected = isset($userData['field_gender_value'])?$userData['field_gender_value']:'All';
 					$selAll = $selm = $self = '';
@@ -33,9 +33,9 @@
 				<option value="female" <?php echo $self ?>>Female</option>
 			</select>
 		</div>
-		<div class="col-xs-6">
-			<label for="edit-field-religion-value">Religion</label>
-			<select id="edit-field-religion-value" name="field_religion_value" class="form-control form-select">
+		<div class="col-xs-3">
+			<label for="edit-field-religion-value">Religion</label><br/>
+			<select id="edit-field-religion-value" name="field_religion_value" class="form-control form-select" style="width:100%;">
 				<?php $rel = isset($userData['field_religion_value'])?$userData['field_religion_value']:'All';
 					$relAll = $relH = $relM = $relC = $relS = '';
 					if($rel == 'All') $relAll = "selected='selected'";
@@ -66,8 +66,8 @@
 
 	<?php foreach ($response as $key => $value) { ?>
 	<div class="row" style="padding:10px;">
-		<div class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:10px;">
-            <div class="panel panel-default">
+		<div class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:10px;margin-bottom:0px;">
+            <div class="panel panel-default" style="margin-bottom:0px;">
                 <div class="row padall">
                     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                         <span></span>
