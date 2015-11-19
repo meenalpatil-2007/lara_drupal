@@ -45,33 +45,32 @@ class ProfileController extends Controller
 		}
 	}
 	
-	function getMyProfile(){
+	function getMyProfile($action=null){
 		//echo "<pre>"; print_r($this->request->session()->all());
 		//print_r($this->request->session()->get('uid'));
 		//exit;
 		$url = $this->site_url	.'/m2serve/my-profile?user='.$this->request->session()->get('uid');		
 		$userDate='';	
 		
-		list($http_code, $output) = $this->cURL($url, $userDate, '', 'GET');		
-		$array = json_decode($output,TRUE);
-		Common::pr($array); exit;
+		$result = $this->cURL($url, $userDate, $this->request->session()->get('cookie'), 'GET');	
+		$output = Common::validateCurlResponse($result);
 		
-		if ($http_code == 200)
-		{
-			if(!count($array)){			
+		if(is_object($output)) {
+			return $output;
+		} else {
+		$array = json_decode($output,TRUE);
+		//Common::pr($array); exit;	
+		
+			if(empty($array)){			
 				$view = view('profile.edit_profile', array('item'=>$array));
 			}else{
 				$view = view('profile.my_profile', array('item'=>$array[0]));
 			}
 			
-			if($_SERVER['REQUEST_URI'] == "/edit-profile"){
+			if($action == "edit"){
 				$view = view('profile.edit_profile', array('item'=>$array));						
 			}
-		}
-		else 
-		{
-			$request->session()->flash('message', $array[0]);
-			$view = redirect()->back();
+		
 		}	
 		
 		return $view;
