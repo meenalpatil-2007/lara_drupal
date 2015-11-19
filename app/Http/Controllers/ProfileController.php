@@ -37,11 +37,11 @@ class ProfileController extends Controller
 			/* PAGINATION CODE */
 			$page = isset($userData['page'])?$userData['page']:0;
 			$pagination = Common::getPagination($page, $response);
-			$pagination['url'] = $url;
+			$pagination['url'] = Common::curPageURL();
 			//Common::pr($pagination); exit;
-			
+			$paginationUI = Common::getPaginationUI($pagination);
 			//combine=aks&field_gender_value=female&field_religion_value=All&field_living_location_value%5B%5D=mumbai
-			return view('pages.search', array('userData' => $userData, 'response' => $response, 'paginationData' => $pagination));
+			return view('pages.search', array('userData' => $userData, 'response' => $response, 'paginationUI' => $paginationUI));
 		}
 	}
 	
@@ -54,7 +54,6 @@ class ProfileController extends Controller
 		
 		list($http_code, $output) = $this->cURL($url, $userDate, '', 'GET');		
 		$array = json_decode($output,TRUE);
-		Common::pr($array); exit;
 		
 		if ($http_code == 200)
 		{
@@ -75,5 +74,14 @@ class ProfileController extends Controller
 		}	
 		
 		return $view;
+	}
+
+	function getTest() {
+		$appendParams = array('page' => 20, 'exists' => 'yes','hello' =>'itsworking');
+		$url = 'http://laravel5.dev/profile/search?combine=name&field_living_location_value=pune&field_gender_value=All&field_religion_value=All&page=2';
+		
+		$res = Common::appendParamToUrlNew($appendParams, $url);
+		print_r($res);
+		//http://laravel5.dev/profile/search?combine=name&field_living_location_value=pune&field_gender_value=All&field_religion_value=All&page=20&exists=yes
 	}
 }

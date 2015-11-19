@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Html::style('/assets/css/style.css') !!}
-
+<?php //echo "<pre>"; print_r($item); exit; ?>
     <!-- Sneha's Style css -->
 <div class="container">
 <div class="col-sm-12 col-md-12 col-lg-12 topp50">
@@ -54,7 +54,7 @@
 	<div class="panel-heading">Contact Details</div>
 		<div class="panel-body">
 		<div class="col-sm-6 col-md-6 col-lg-6">
-			<b>Living Location</b>&nbsp;:&nbsp; {{ $item['living location'] }}
+			<b>Living Location</b>&nbsp;:&nbsp; {{ $item['Living location'] }}
 		</div>
 		<div class="col-sm-6 col-md-6 col-lg-6">
 			<b>Mobile No.</b>&nbsp;:&nbsp; {{ $item['mobile number'] }}

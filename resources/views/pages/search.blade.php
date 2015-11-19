@@ -96,7 +96,7 @@
     </div>
     <?php } ?>
 
-    @include('pages.pagination')
+    <?php echo $paginationUI; ?>
 
 </div>
 <script type="text/javascript">

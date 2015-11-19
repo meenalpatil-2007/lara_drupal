@@ -11,8 +11,9 @@
     [totalPages] => 4
     [currPage] => 2
 )*/
-
-for($i = 0; $i < $paginationData['totalPages']; $i++) { ?>
-	
-	<a href="" ><?php echo ($i+1); ?></a> 
+$url = $paginationData['url'];
+for($i = 0; $i < $paginationData['totalPages']; $i++) { 
+	$appendArr = array('page' => $i);
+?>
+	<a href="<?php echo Common::appendParamToUrlNew($appendArr, $url); ?>"><?php echo ($i+1); ?></a> 
 <?php } ?>

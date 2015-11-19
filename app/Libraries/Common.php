@@ -23,8 +23,27 @@ class Common {
 		return $url;
 	}
 
-	static function appendParamToUrlNew() {
-		return http_build_query(array_merge($getArr, array('newvar'=>'123')));
+	static function curPageURL() {
+		$pageURL = 'http';
+		if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
+			$pageURL .= "s";
+		}
+		$pageURL .= "://";
+		if ($_SERVER["SERVER_PORT"] != "80") {
+			$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		} else {
+			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+		return $pageURL;
+	}
+
+	static function appendParamToUrlNew($appendArr, $url) {
+		$url_parts = parse_url($url);
+		parse_str(parse_url( $url, PHP_URL_QUERY), $get_array);
+		$base_url = $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'];
+
+		$url =  $base_url."?".http_build_query(array_merge($get_array, $appendArr));
+		return $url;
 	}
 
 	static function validateCurlResponse($response) {
@@ -41,6 +60,20 @@ class Common {
 		$totalResults = $currFirst + $limit * ($pageNum);
 		$totalPages = ceil($totalResults / $limit);
 		return array('currFirst' => $currFirst, 'totalResults' => $totalResults, 'totalPages' => $totalPages, 'currPage' => ($pageNum + 1));
+	}
+
+	static function getPaginationUI($paginationData) {
+		$returnStr = '';
+		if($paginationData['totalPages'] > 1) {
+			$url = $paginationData['url'];
+			$returnStr .= '<ul class = "pagination pagination-lg">';
+			for($i = 0; $i < $paginationData['totalPages']; $i++) { 
+				$appendArr = array('page' => $i);
+				$returnStr .= '<li><a href="'.Self::appendParamToUrlNew($appendArr, $url).'">'.($i+1).'</a></li>';
+			}
+			$returnStr .= '</ul>';
+		}
+		return $returnStr;
 	}
 
 	static function timeAgo() {
