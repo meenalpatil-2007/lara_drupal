@@ -45,14 +45,16 @@ class ProfileController extends Controller
 		}
 	}
 	
-	function showProfile(Request $request){
-		
-		$url = $this->site_url	.'/m2serve/my-profile?user='.$request->session()->get('uid');		
+	function getMyProfile(){
+		//echo "<pre>"; print_r($this->request->session()->all());
+		//print_r($this->request->session()->get('uid'));
+		//exit;
+		$url = $this->site_url	.'/m2serve/my-profile?user='.$this->request->session()->get('uid');		
 		$userDate='';	
 		
-		list($http_code, $output) = $this->cURL($url, $userDate, $cookie='', $method='GET');		
+		list($http_code, $output) = $this->cURL($url, $userDate, '', 'GET');		
 		$array = json_decode($output,TRUE);
-		//Common::pr($array[0]);
+		Common::pr($array); exit;
 		
 		if ($http_code == 200)
 		{

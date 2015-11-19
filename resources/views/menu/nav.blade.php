@@ -27,8 +27,8 @@
 					<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile <span class="caret"></span></a>
                         <ul class="dropdown-menu " role="menu">
-                            <li class="menu-open"><a href="edit-profile">Edit Profile</a></li>
-							<li class="menu-open"><a href="my-profile">My Profile</a></li>
+                            <li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','Edit Profile') !!}</li>
+							<li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','My Profile') !!}</li>
                             <!--li><a href="profile/">Edit Profile</a></li-->
                         </ul>
                    </li>
