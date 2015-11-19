@@ -21,6 +21,7 @@ class HomeController extends Controller
 
     public function getIndex() {
     	$profiles = $this->matchingProfile();
+    	//dd($profiles);
     	return view('pages.home', array('profiles' => $profiles));
     }
 

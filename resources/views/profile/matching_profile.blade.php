@@ -15,7 +15,7 @@
 			    @foreach ($profiles as $profile)
 			      	<li  class="list-group-item text-left">
 				      	<a href="#" class="name">
-					        {!! Html::image('/assets/plugins/bootstrap/img/1.jpg', 'a picture', ['class' => 'img-thumbnail']) !!}
+				      	{!! $profile['profile img'] !!}
 					        {{ $profile['field_first_name'] }}
 				      	</a>
 				        <!--label class="pull-right">
