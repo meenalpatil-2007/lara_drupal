@@ -26,8 +26,8 @@ class Custom
      */
     public function handle($request, Closure $next)
     {
-        if (($request->session()->has('user')) && ($request->is('login') || $request->is('register'))) {
-            return redirect('/');
+        if (($request->session()->has('user')) && ($request->is('login') || $request->is('register') || $request->is('/'))) {
+            return redirect('/home/home');
         }
         else if (!$request->session()->has('user') && $request->is('/')) {
             return redirect('register');

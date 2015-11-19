@@ -21,5 +21,5 @@ Route::get('/' , function () {
 // Route::get('edit-profile' ,'ProfileController@showProfile');
 
 Route::controller('profile', 'ProfileController');
+Route::controller('home', 'HomeController');
 Route::controller('', 'UserController');
-Route::controller('', 'HomeController');
