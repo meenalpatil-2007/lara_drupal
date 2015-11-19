@@ -16,7 +16,7 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (Session::has('email'))
                     <li><a href="/">Home</a></li>
-                    <li><a href="#">profile</a></li>
+                    <!--<li><a href="#">profile</a></li>-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Session::get('email') }} <span class="caret"></span></a>
                         <ul class="dropdown-menu " role="menu">
