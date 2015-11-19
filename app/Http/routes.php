@@ -17,9 +17,9 @@ Route::get('/' , function () {
 
 
 
-Route::get('my-profile', 'ProfileController@showProfile');
-Route::get('edit-profile' ,'ProfileController@showProfile');
+// Route::get('my-profile', 'ProfileController@showProfile');
+// Route::get('edit-profile' ,'ProfileController@showProfile');
 
-//Route::controller('profile', 'ProfileController');
+Route::controller('profile', 'ProfileController');
 Route::controller('', 'UserController');
 Route::controller('', 'HomeController');

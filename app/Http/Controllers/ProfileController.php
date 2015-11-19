@@ -65,7 +65,6 @@ class ProfileController extends Controller
 			if($_SERVER['REQUEST_URI'] == "/edit-profile"){
 				$view = view('profile.edit_profile', array('item'=>$array));						
 			}
-			
 		}
 		else 
 		{
