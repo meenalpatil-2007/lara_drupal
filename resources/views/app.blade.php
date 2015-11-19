@@ -27,6 +27,7 @@
 
     <!-- Extras -->
     {!! Html::style('/assets/extras/animate.css') !!}
+    {!! Html::style('/assets/css/custom.css') !!}
 
     @yield('head')
  
