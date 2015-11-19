@@ -10,9 +10,7 @@
 <div class="container bootstrap snippet">
 	<div class="row">
 	<div class="list-content">
-	@if($profiles)
 		@include('profile.matching_profile')
-	@endif	
 	</div>
 	</div>
 </div>
