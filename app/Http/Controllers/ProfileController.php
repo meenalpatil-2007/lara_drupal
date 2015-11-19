@@ -29,13 +29,19 @@ class ProfileController extends Controller
 		$result = $this->cURL($url, $userData, $this->request->session()->get('cookie'), 'GET');
 		$res = Common::validateCurlResponse($result);
 
-
 		if(is_object($res)) {
 			return $res;
 		} else {
-			//combine=aks&field_gender_value=female&field_religion_value=All&field_living_location_value%5B%5D=mumbai
 			$response = json_decode($res);
-			return view('pages.search', array('userData' => $userData, 'response' => $response));
+
+			/* PAGINATION CODE */
+			$page = isset($userData['page'])?$userData['page']:0;
+			$pagination = Common::getPagination($page, $response);
+			$pagination['url'] = $url;
+			//Common::pr($pagination); exit;
+			
+			//combine=aks&field_gender_value=female&field_religion_value=All&field_living_location_value%5B%5D=mumbai
+			return view('pages.search', array('userData' => $userData, 'response' => $response, 'paginationData' => $pagination));
 		}
 	}
 	

@@ -23,11 +23,24 @@ class Common {
 		return $url;
 	}
 
+	static function appendParamToUrlNew() {
+		return http_build_query(array_merge($getArr, array('newvar'=>'123')));
+	}
+
 	static function validateCurlResponse($response) {
 		if($response[0] !== 200) {
 			return view('errors.SWW');
 		} else 
 		return $response[1];
+	}
+
+	static function getPagination($pageNum = 0, $resultArr = array()) {
+		//Self::pr($resultArr);
+		$limit = config('config.PAGINATION_LIMIT');
+		$currFirst = (isset($resultArr[0]) && !empty($resultArr[0]->counter))?$resultArr[0]->counter:0;
+		$totalResults = $currFirst + $limit * ($pageNum);
+		$totalPages = ceil($totalResults / $limit);
+		return array('currFirst' => $currFirst, 'totalResults' => $totalResults, 'totalPages' => $totalPages, 'currPage' => ($pageNum + 1));
 	}
 
 	static function timeAgo() {

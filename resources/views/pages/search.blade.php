@@ -95,6 +95,9 @@
         </div>
     </div>
     <?php } ?>
+
+    @include('pages.pagination')
+
 </div>
 <script type="text/javascript">
 	$('#edit-reset').click(function(){
