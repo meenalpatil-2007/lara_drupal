@@ -16,7 +16,7 @@
 			      	<li  class="list-group-item text-left">
 				      	<a href="#" class="name">
 				      	{!! $profile['profile img'] !!}
-					        {{ $profile['field_first_name'] }}
+					        <span>{{ $profile['field_first_name'] }} {{ $profile['last name'] }}</span>
 				      	</a>
 				        <!--label class="pull-right">
 				            <a  class="btn btn-info  btn-xs glyphicon glyphicon glyphicon-comment"  title="Send message"></a>

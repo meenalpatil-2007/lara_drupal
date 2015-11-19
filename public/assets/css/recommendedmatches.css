@@ -62,3 +62,7 @@ padding-top: 70px;
     display: inline-block;
     border-top: solid 2px #e1dddd;
 }
+
+span {
+    margin-left: 10px;
+}
