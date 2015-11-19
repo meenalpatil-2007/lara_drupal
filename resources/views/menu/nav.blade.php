@@ -20,15 +20,16 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Session::get('email') }} <span class="caret"></span></a>
                         <ul class="dropdown-menu " role="menu">
-                            <li class="menu-open"><a href="logout">Logout</a></li>
+                           <!-- <li class="menu-open"><a href="logout">Logout</a></li> -->
+							<li class="menu-open">{!! Html::linkAction('UserController@getLogout','Logout') !!}</li>
                             <!--li><a href="profile/">Edit Profile</a></li-->
                         </ul>
                     </li>
 					<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile <span class="caret"></span></a>
                         <ul class="dropdown-menu " role="menu">
-                            <li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','Edit Profile') !!}</li>
-							<li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','My Profile') !!}</li>
+                            <li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','Edit Profile', 'edit') !!}</li>
+							<li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','My Profile', 'view') !!}</li>
                             <!--li><a href="profile/">Edit Profile</a></li-->
                         </ul>
                    </li>
