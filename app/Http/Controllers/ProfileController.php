@@ -37,4 +37,35 @@ class ProfileController extends Controller
 			return view('pages.search', array('userData' => $userData));
 		}
 	}
+	
+	function showProfile(Request $request){
+		
+		$url = $this->site_url	.'/m2serve/my-profile?user='.$request->session()->get('uid');		
+		$userDate='';	
+		
+		list($http_code, $output) = $this->cURL($url, $userDate, $cookie='', $method='GET');		
+		$array = json_decode($output,TRUE);
+		//Common::pr($array[0]);
+		
+		if ($http_code == 200)
+		{
+			if(!count($array)){			
+				$view = view('profile.edit_profile', array('item'=>$array));
+			}else{
+				$view = view('profile.my_profile', array('item'=>$array[0]));
+			}
+			
+			if($_SERVER['REQUEST_URI'] == "/edit-profile"){
+				$view = view('profile.edit_profile', array('item'=>$array));						
+			}
+			
+		}
+		else 
+		{
+			$request->session()->flash('message', $array[0]);
+			$view = redirect()->back();
+		}	
+		
+		return $view;
+	}
 }

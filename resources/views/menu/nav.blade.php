@@ -24,6 +24,14 @@
                             <!--li><a href="profile/">Edit Profile</a></li-->
                         </ul>
                     </li>
+					<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile <span class="caret"></span></a>
+                        <ul class="dropdown-menu " role="menu">
+                            <li class="menu-open"><a href="edit-profile">Edit Profile</a></li>
+							<li class="menu-open"><a href="my-profile">My Profile</a></li>
+                            <!--li><a href="profile/">Edit Profile</a></li-->
+                        </ul>
+                   </li>
                 @else
                     <li class="{{ $login or '' }}"><a href="login" >Sign In</a></li>
                     <li class="{{ $register or '' }}"><a href="register">Sign up</a></li>

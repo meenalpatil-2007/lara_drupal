@@ -34,11 +34,12 @@ class UserController extends Controller
 		$userData = ['username' => $this->request->all()['username'], 'password' => $this->request->all()['password']];
 		list($http_code, $output) = $this->cURL($url, $userData);
 		
-		$array = json_decode($output,TRUE);
+		$array = json_decode($output,TRUE);		
 		if ($http_code == 200)
 		{
 			setcookie($array['session_name'], $array['sessid']);
-			$cookie_session = "Cookie: ". $array['session_name'] . '=' . $array['sessid'];
+			$cookie_session = "Cookie: ". $array['session_name'] . '=' . $array['sessid']; 	
+			$request->session()->put('uid', $array['user']['uid']);       // added user uid by Sneha Nikhare		
 			$request->session()->put('email', $array['user']['mail']);
 			$request->session()->put('name', $array['user']['name']);
 			$request->session()->put('_token', $array['token']);
