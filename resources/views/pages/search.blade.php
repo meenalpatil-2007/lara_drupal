@@ -1,6 +1,6 @@
 @extends('app')
-
 @section('content')
+
 <div class="container">
 
 <div class="page_header">
@@ -62,6 +62,7 @@
 	</div>
 {!! Form::close() !!}
 
+	<?php echo $paginationUI; ?>
 
 	<?php foreach ($response as $key => $value) { ?>
 	<div class="row" style="padding:10px;">
@@ -87,7 +88,7 @@
                         </div>
                         <div>
                             <h4><span class="fa icon"></span><?php echo $value->field_education; ?></h4>
-                            <?php echo $value->field_about_me; ?> <!--span class="fa fa-lock icon pull-right"> Sold</span-->
+                            <?php echo App\Libraries\Common::truncateToLength($value->field_about_me); ?><!--span class="fa fa-lock icon pull-right"> Sold</span-->
                         </div>
                     </div>
                 </div>

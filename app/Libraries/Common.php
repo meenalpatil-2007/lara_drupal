@@ -46,6 +46,13 @@ class Common {
 		return $url;
 	}
 
+	static function truncateToLength($phrase, $max_words=20) {
+		$phrase_array = explode(' ',$phrase);
+		if(count($phrase_array) > $max_words && $max_words > 0)
+			$phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...';
+		return $phrase;
+	}
+
 	static function validateCurlResponse($response) {
 		if($response[0] !== 200) {
 			return view('errors.SWW');
@@ -64,14 +71,19 @@ class Common {
 
 	static function getPaginationUI($paginationData) {
 		$returnStr = '';
+
 		if($paginationData['totalPages'] > 1) {
 			$url = $paginationData['url'];
-			$returnStr .= '<ul class = "pagination pagination-lg">';
+			$returnStr .= '<div class="pagination_class"><ul class = "pagination pagination-lg">';
 			for($i = 0; $i < $paginationData['totalPages']; $i++) { 
+				$class = '';
+				if($paginationData['currPage']-1 == $i) {
+					$class = 'class="active"';
+				}
 				$appendArr = array('page' => $i);
-				$returnStr .= '<li><a href="'.Self::appendParamToUrlNew($appendArr, $url).'">'.($i+1).'</a></li>';
+				$returnStr .= '<li '.$class.'><a href="'.Self::appendParamToUrlNew($appendArr, $url).'">'.($i+1).'</a></li>';
 			}
-			$returnStr .= '</ul>';
+			$returnStr .= '</ul></div>';
 		}
 		return $returnStr;
 	}
