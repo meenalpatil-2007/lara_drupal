@@ -10,12 +10,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-            <a class="navbar-brand" href="login"><i class="fa fa-fa fa-cubes"></i> Matrimonial!</a>
+            <a class="navbar-brand" href=""><i class="fa fa-fa fa-cubes"></i> Matrimonial!</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 @if (Session::has('email'))
                     <li><a href="/">Home</a></li>
+                    <li><a href="/profile/search">Search</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile <span class="caret"></span></a>
                         <ul class="dropdown-menu " role="menu">
