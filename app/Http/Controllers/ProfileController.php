@@ -11,7 +11,7 @@ class ProfileController extends Controller
 
     public function __construct(Request $request)
 	{
-	    $this->middleware('custom');
+	    $this->middleware('custom');		//add in new controller for pages which requires user to be authenticated
 		$this->site_url = config('config.SITE_URL');
 		$this->request = $request;
 	}

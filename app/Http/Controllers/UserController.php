@@ -30,7 +30,7 @@ class UserController extends Controller
 
 	public function postLogin(Request $request) 
 	{
-		$url = $this->site_url	.'/m2serve/user/login';
+		$url = $this->site_url	.'m2serve/user/login';
 		$userData = ['username' => $this->request->all()['username'], 'password' => $this->request->all()['password']];
 		list($http_code, $output) = $this->cURL($url, $userData);
 		
@@ -58,7 +58,7 @@ class UserController extends Controller
 
 	public function getLogout(Request $request) 
 	{
-		$url = $this->site_url	.'/m2serve/user/logout';
+		$url = $this->site_url	.'m2serve/user/logout';
 		$userData = '';	
 		$result = $this->cURL($url, $userData, $request->session()->get('cookie'));
 		
@@ -75,7 +75,7 @@ class UserController extends Controller
 
 	public function postRegister(Request $request) 
 	{
-		$url = $this->site_url	.'/m2serve/user/register';
+		$url = $this->site_url	.'m2serve/user/register';
 		$userData = $this->request->all();
 		unset($userData['_token']);
 		$userData = ['name' => $userData['username'], 
@@ -86,6 +86,7 @@ class UserController extends Controller
 					 			'pass2' => $userData['password']],  
 					 'roles' => [2]
 					];
+		$this->request->session()->put('service', 'm2serve/view_show_all_profiles_service');
 		$result = $this->cURL($url, $userData);
 		$this->postLogin($this->request);
 		return redirect('/');

@@ -27,12 +27,13 @@ class HomeController extends Controller
 
 
     public function getMatchingProfile () {
-    	
-    	$url = $this->site_url	.'/m2serve/view_recommended_matches_service?user='.$this->request->session()->get('uid');		
+
+    	$service = $this->request->session()->get('service') ?  $this->request->session()->get('service') : 'm2serve/view_recommended_matches_service';
+    	$url = $this->site_url	.  $service  .'?user='.$this->request->session()->get('uid');		
 		
 		$result = $this->cURL($url, Null, $this->request->session()->get('cookie'), 'GET');	
+		dd(count($result[1]));
 		$output = Common::validateCurlResponse($result);
-		
 		if(is_object($output)) {
 			return $output;
 		} 
