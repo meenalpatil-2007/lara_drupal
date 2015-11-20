@@ -16,10 +16,6 @@ class ProfileController extends Controller
 		$this->request = $request;
 	}
 
-	function getIndex() {
-		echo "in getprog";
-	}
-
 	function getSearch() {
 		// Pagination - https://www.drupal.org/node/905440
 		$userData = $this->request->all();
@@ -63,6 +59,24 @@ class ProfileController extends Controller
 			}
 		}
 		return $view;
+	}
+
+	function getView($uid) {
+		$url = $this->site_url	.'/m2serve/my-profile?user='.$uid;		
+		$userDate='';	
+		
+		$result = $this->cURL($url, $userDate, $this->request->session()->get('cookie'), 'GET');	
+		$output = Common::validateCurlResponse($result);
+		
+		if(is_object($output)) {
+			return $output;
+		} else {
+			$array = json_decode($output,TRUE);
+			if(isset($array[0]))
+				return view('profile.my_profile', array('item'=>$array[0]));
+			else 
+				return view('errors.SWW');
+		}
 	}
 
 	function getTest() {

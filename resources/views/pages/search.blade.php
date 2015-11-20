@@ -71,7 +71,7 @@
                 <div class="row padall">
                     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                         <span></span>
-                        <?php echo $value->field_profile_img; ?>
+                        <a href="/profile/view/<?php echo $value->uid; ?>"><?php echo $value->field_profile_img; ?></a>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                         <div class="clearfix">
