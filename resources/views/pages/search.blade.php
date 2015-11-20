@@ -76,7 +76,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                         <div class="clearfix">
                             <div class="pull-left">
-                                <span class="fa  icon"> <?php echo $value->field_first_name." ".$value->field_last_name; ?></span>
+                                <a href="/profile/view/<?php echo $value->uid; ?>"><span class="fa icon"> <?php echo $value->field_first_name." ".$value->field_last_name; ?></span></a>
                             </div>
                             <div class="pull-right">
                                 <?php echo $value->field_gender; ?><br/>
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div>
-                            <span class="glyphicon glyphicon-envelope"></span> <?php echo $value->users_profile_mail; ?>
+                            <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:<?php echo $value->users_profile_mail; ?>" target="_top"><?php echo $value->users_profile_mail; ?></a>
                         </div>
                         <div>
                             <h4><span class="fa icon"></span><?php echo $value->field_education; ?></h4>
