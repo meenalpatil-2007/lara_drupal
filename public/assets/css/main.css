@@ -15,8 +15,10 @@ a {
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-a:hover {
-  color: #e76c3c;
+
+a:hover, a:visited, a:link, a:active {
+    color:#5bc0de;    
+    text-decoration: none;
 }
 .row {
   padding: 60px 0px;
@@ -61,10 +63,9 @@ a:hover {
 }
 .subtitle-small {
   font-weight: 100;
-  padding-bottom: 30px;
+  padding-bottom: 3px;
   position: relative;
-  color: #bdc3c7;
-  font-size: 20px;
+  font-size: 17px;
 }
 .logo-menu .container {
   margin-top: 20px;

@@ -11,26 +11,38 @@
 			<span class="grey-line"></span>
 		</div>
 	</li>
+	<div class="test" onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
+	
 	@foreach ($profiles as $profile)
 	  	<li  class="list-group-item text-left">
 	      	<a href="#" class="name">
 	      	@if($profile['profile img'])
 	      		{!! $profile['profile img'] !!}
 	      	@endif	
-		        <span> {{ $profile['fname'] }} {{ $profile['lname'] }}</span>
+		        {{ $profile['fname'] }} {{ $profile['lname'] }}
+
 	      	</a>
+	      	<div class="subtitle-small ext-box glyphicon glyphicon-envelope "><div class="int-box">{!! $profile['email'] !!}</div></div>
+	      	<div class="subtitle-small ext-box glyphicon glyphicon-registration-mark "><div class="int-box">{{ $profile['religion'] }}</div></div>
+	      	<div class="subtitle-small ext-box glyphicon glyphicon-search "><div class="int-box">{{ $profile['looking for'] }}</div></div>
+	      	<div class="subtitle-small ext-box glyphicon glyphicon-home "><div class="int-box">{{ $profile['living location'] }}</div></div>
+	      	<div class="subtitle-small ext-box glyphicon glyphicon-education "><div class="int-box">{{ $profile['education'] }}</div></div>
+			<div class="subtitle-small ext-box <?php echo strtolower($profile['gender']) == 'male' ? 'fa fa-male': 'fa fa-female';?> "><div class="int-box">{{ $profile['gender'] }}</div></div>
+	        <div class="subtitle-small ext-box fa fa-sort-numeric-desc "><div class="int-box">{{ $profile['height'] }}</div></div>
+	        
 	        <!--label class="pull-right">
 	            <a  class="btn btn-info  btn-xs glyphicon glyphicon glyphicon-comment"  title="Send message"></a>
 	        </label-->
 	        <div class="break"></div>
 	  	</li>
 	@endforeach
+	</div>
 	<li  class="list-group-item text-left">
 	    <a class="btn btn-block btn-primary" id="loadMore">
 	        <i class="glyphicon glyphicon-refresh"></i>
 	        Load more...
 	    </a>
 	</li>
-</ul>
 
+</ul>
 @endif

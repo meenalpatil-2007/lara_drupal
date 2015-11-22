@@ -20,6 +20,11 @@ class HomeController extends Controller
 		$this->request = $request;
 	}
 
+	function __invoke() 
+    {
+         // your action
+    }
+
     public function getIndex() {
     	$profiles = $this->getMatchingProfile();
     	return view('pages.home', array('profiles' => $profiles));
@@ -27,26 +32,31 @@ class HomeController extends Controller
 
 
     public function getMatchingProfile () {
-
     	$service = $this->request->session()->get('service') ?  $this->request->session()->get('service') : 'm2serve/view_recommended_matches_service';
-    	$url = $this->site_url	.  $service  .'?user='.$this->request->session()->get('uid');		
-		
-		$result = $this->cURL($url, Null, $this->request->session()->get('cookie'), 'GET');	
-		dd(count($result[1]));
-		$output = Common::validateCurlResponse($result);
-		if(is_object($output)) {
-			return $output;
-		} 
-		else {
-			$array = json_decode($output,TRUE);
-		}
+    	$matchingProfile = function($service) {
+    		$this->url = $this->site_url	.  $service  .'?user='.$this->request->session()->get('uid');
+    		$this->result = Common::validateCurlResponse($this->cURL($this->url, Null, $this->request->session()->get('cookie'), 'GET'));
+    		if(is_object($this->result)) {
+				return $this->result;exit;
+			}
+			else {
+				return json_decode($this->result,TRUE);
+			}
+   			return ;	
+		};
 
+    	$result = $matchingProfile($service);
+		if (empty($result)) {
+			$this->request->session()->put('service', 'm2serve/view_show_all_profiles_service');
+			$result = $matchingProfile('m2serve/view_show_all_profiles_service');
+		}
+		
 		if ($this->request->ajax())
 		{
-		   return view('profile.matching_profile', array('profiles' => $array));exit;
+		   return view('profile.matching_profile', array('profiles' => $result));exit;
 		}
 		else {
-			return $array;
+			return $result;
 		}
 		
 	}

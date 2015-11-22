@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container bootstrap snippet">
-	<div class="row">
+	<div class="row" >
 	<div class="list-content">
 		@include('profile.matching_profile')
 	</div>

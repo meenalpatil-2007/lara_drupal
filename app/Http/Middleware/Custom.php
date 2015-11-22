@@ -26,10 +26,14 @@ class Custom
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->session()->has('user')) {
+        if (!$request->session()->has('user') 
+        && (!$request->is('user/*') 
+        || $request->is('user/logout'))) {
             return redirect('user/login');
         }
-        elseif ($request->session()->has('user') && ($request->is('users/login') || $request->is('users/register'))) {
+        elseif ($request->session()->has('user') 
+        && ($request->is('user/*') 
+        && !$request->is('user/logout'))) {
             return redirect('/');
         }
         

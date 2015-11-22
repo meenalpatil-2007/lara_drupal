@@ -1,22 +1,38 @@
 .list-content{
-min-height:300px;
+min-height:100px;
 padding-top: 70px;
+margin:0 20px 0 20px;
+width:350px;
+color:#5bc0de;
 }
+
 .list-content .list-group .title{
   background:#5bc0de;
   border:2px solid #DDDDDD;
   font-weight:bold;
   color:#FFFFFF;
   text-align: center;
-
 }
+
+.test{
+    max-height:295px;
+    overflow-y:scroll;
+}
+
+.list-group-item {
+background-color:transparent;
+}
+
 .list-group-item img {
     height:80px; 
     width:80px;
     overflow:hidden;
     border-radius:60%;
 }
+.bg {
+    background:rgba(200,200,200,0.25);
 
+}
 .jumbotron .btn {
     padding: 5px 5px !important;
     font-size: 12px !important;
@@ -28,11 +44,6 @@ padding-top: 70px;
     width:100%;
     margin:20px;
 }
-.name, a.name:hover {
-    color:#5bc0de;    
-    text-decoration: none;
-}
-
 
 .heart-divider {
     text-align: center;
@@ -63,6 +74,40 @@ padding-top: 70px;
     border-top: solid 2px #e1dddd;
 }
 
-span {
-    margin-left: 10px;
+div.ext-box { 
+    display: table; 
+    margin-top: 5px;
+    margin-left:15px;
+}
+div.int-box { 
+    display: table-cell; 
+    
+    padding-left:5px;
+}
+
+.list-content li:hover {
+    -webkit-box-shadow: 0 0px 10px #b0b0b0;
+       -moz-box-shadow: 0 0px 10px #b0b0b0;
+         -o-box-shadow: 0 0px 10px #b0b0b0;
+            box-shadow: 0 0px 10px #b0b0b0;
+}
+
+
+.glyphicon-refresh-animate {
+    -animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-webkit-keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+img {
+    pointer-events: none;
 }
