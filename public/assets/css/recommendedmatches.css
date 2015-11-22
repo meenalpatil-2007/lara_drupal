@@ -1,5 +1,5 @@
 .list-content{
-min-height:100px;
+height:75%;
 padding-top: 70px;
 margin:0 20px 0 20px;
 width:350px;
@@ -15,7 +15,7 @@ color:#5bc0de;
 }
 
 .test{
-    max-height:295px;
+    max-height:297px;
     overflow-y:scroll;
 }
 
