@@ -85,11 +85,11 @@ div.int-box {
     padding-left:5px;
 }
 
-.list-content li:hover {
-    -webkit-box-shadow: 0 0px 10px #b0b0b0;
-       -moz-box-shadow: 0 0px 10px #b0b0b0;
-         -o-box-shadow: 0 0px 10px #b0b0b0;
-            box-shadow: 0 0px 10px #b0b0b0;
+.list-content li {
+    -webkit-box-shadow: 0 10px 10px #b0b0b0;
+       -moz-box-shadow: 0 10px 10px #b0b0b0;
+         -o-box-shadow: 0 10px 10px #b0b0b0;
+            box-shadow: 0 10px 10px #b0b0b0;
 }
 
 
