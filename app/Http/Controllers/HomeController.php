@@ -42,7 +42,7 @@ class HomeController extends Controller
 			else {
 				return json_decode($this->result,TRUE);
 			}
-   			return ;	
+   			return;	
 		};
 
     	$result = $matchingProfile($service);

@@ -2,7 +2,7 @@
 @if ($profiles)
 
 <ul class="list-group">
-	<li  class="list-group-item title">
+	<li  class="list-group-item header title">
 	    Recommended Matches 
 	    <div class="heart-divider">
 			<span class="grey-line"></span>
@@ -18,13 +18,20 @@
 	      	<a href="#" class="name">
 	      	@if($profile['profile img'])
 	      		{!! $profile['profile img'] !!}
+	      	@else
+	      		@if(strtolower($profile['gender']) == 'male')
+	      			{!! Html::image('/assets/plugins/bootstrap/img/male.png') !!}
+	      		@else
+	      			{!! Html::image('/assets/plugins/bootstrap/img/female.jpg') !!}
+	      		@endif
 	      	@endif	
 		        {{ $profile['fname'] }} {{ $profile['lname'] }}
 
 	      	</a>
+	      	
 	      	<div class="subtitle-small ext-box glyphicon glyphicon-envelope "><div class="int-box">{!! $profile['email'] !!}</div></div>
-	      	<div class="subtitle-small ext-box glyphicon glyphicon-registration-mark "><div class="int-box">{{ $profile['religion'] }}</div></div>
-	      	<div class="subtitle-small ext-box glyphicon glyphicon-search "><div class="int-box">{{ $profile['looking for'] }}</div></div>
+	      	<div class="subtitle-small ext-box glyphicon glyphicon-registration-mark"><div class="int-box">{{ $profile['religion'] }}</div></div>
+			<div class="subtitle-small ext-box glyphicon glyphicon-search "><div class="int-box">{{ $profile['looking for'] }}</div></div>
 	      	<div class="subtitle-small ext-box glyphicon glyphicon-home "><div class="int-box">{{ $profile['living location'] }}</div></div>
 	      	<div class="subtitle-small ext-box glyphicon glyphicon-education "><div class="int-box">{{ $profile['education'] }}</div></div>
 			<div class="subtitle-small ext-box <?php echo strtolower($profile['gender']) == 'male' ? 'fa fa-male': 'fa fa-female';?> "><div class="int-box">{{ $profile['gender'] }}</div></div>
