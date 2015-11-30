@@ -1,6 +1,5 @@
 
 @if ($profiles)
-
 <ul class="list-group">
 	<li  class="list-group-item header title">
 	    Recommended Matches 
@@ -15,7 +14,7 @@
 	
 	@foreach ($profiles as $profile)
 	  	<li  class="list-group-item text-left">
-	      	<a href="#" class="name">
+	      	<a href="/profile/view/<?php echo $profile['Uid']; ?>" class="name">
 	      	@if($profile['profile img'])
 	      		{!! $profile['profile img'] !!}
 	      	@else
