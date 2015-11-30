@@ -12,7 +12,15 @@
 			<div class="panel-body">
 			<div class="col-sm-6 col-md-6 col-lg-6">
 				<div id="img_box" class="img-responsive">
-				{!!$item['profile img']!!}							
+				@if($item['profile img'])
+	      			{!! $item['profile img'] !!}
+		      	@else
+		      		@if(strtolower($item['gender']) == 'male')
+		      			{!! Html::image('/assets/plugins/bootstrap/img/male.png', 'profile', array('width' => '200px')) !!}
+		      		@else
+		      			{!! Html::image('/assets/plugins/bootstrap/img/female.jpg', 'profile', array('width' => '200px')) !!}
+		      		@endif
+		      	@endif	
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-6 col-lg-6">			

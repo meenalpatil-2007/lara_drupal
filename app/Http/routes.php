@@ -15,8 +15,8 @@ Route::get('/' , function () {
     return view('pages.home');
 });
 
-// Route::get('my-profile', 'ProfileController@showProfile');
-// Route::get('edit-profile' ,'ProfileController@showProfile');
+//Route::get('my-profile', 'ProfileController@showProfile');
+//Route::get('edit-profile' ,'ProfileController@showProfile');
 
 Route::controllers([
 	'profile' => 'ProfileController',
