@@ -19,11 +19,8 @@
 	      	@if($profile['profile img'])
 	      		{!! $profile['profile img'] !!}
 	      	@else
-	      		@if(strtolower($profile['gender']) == 'male')
-	      			{!! Html::image('/assets/plugins/bootstrap/img/male.png') !!}
-	      		@else
-	      			{!! Html::image('/assets/plugins/bootstrap/img/female.jpg') !!}
-	      		@endif
+	      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($profile['gender']).'.png') !!}
+	      		
 	      	@endif	
 		        {{ $profile['fname'] }} {{ $profile['lname'] }}
 

@@ -71,7 +71,14 @@
                 <div class="row padall">
                     <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                         <span></span>
-                        <a href="/profile/view/<?php echo $value->uid; ?>"><?php echo $value->field_profile_img; ?></a>
+                        <a href="/profile/view/<?php echo $value->uid; ?>">
+                        @if($value->field_profile_img)
+				      		{!! $value->field_profile_img !!}
+				      	@else
+				      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($value->field_gender).'.png') !!}
+				      		
+				      	@endif
+                        </a>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                         <div class="clearfix">
