@@ -10,10 +10,10 @@
 			<span class="grey-line"></span>
 		</div>
 	</li>
-	<div class="test" onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
+	<div class="test " onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
 	
 	@foreach ($profiles as $profile)
-	  	<li  class="list-group-item text-left">
+	  	<li  class="list-group-item text-left col-sm-6 col-md-4 col-lg-4">
 	      	<a href="/profile/view/<?php echo $profile['Uid']; ?>" class="name">
 	      	@if($profile['profile img'])
 	      		{!! $profile['profile img'] !!}
