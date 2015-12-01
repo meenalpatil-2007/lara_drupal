@@ -11,19 +11,17 @@
 		</div>
 	</li>
 	<div class="test " onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
-	
 	@foreach ($profiles as $profile)
-	  	<li  class="list-group-item text-left col-sm-6 col-md-4 col-lg-4">
+	  	<li  class="list-group-item text-left animate <?php echo count($profiles) >= 3 ? 'col-sm-6 col-md-4 col-lg-4' : 'col-sm-6 col-md-6 col-lg-6'; ?>">
 	      	<a href="/profile/view/<?php echo $profile['Uid']; ?>" class="name">
 	      	@if($profile['profile img'])
 	      		{!! $profile['profile img'] !!}
 	      	@else
-	      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($profile['gender']).'.png') !!}
+	      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($profile['gender']).'.png', 'profile', ['typeof' => "foaf:Image", 'class' => 'img-responsive', 'width'=> '80']) !!}
 	      		
 	      	@endif	
-		        {{ $profile['fname'] }} {{ $profile['lname'] }}
-
-	      	</a>
+	      	<p>{{ $profile['fname'] }} {{ $profile['lname'] }}</p>	
+		    </a>
 	      	
 	      	<div class="subtitle-small ext-box glyphicon glyphicon-envelope "><div class="int-box">{!! $profile['email'] !!}</div></div>
 	      	<div class="subtitle-small ext-box glyphicon glyphicon-registration-mark"><div class="int-box">{{ $profile['religion'] }}</div></div>

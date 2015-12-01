@@ -20,7 +20,7 @@ color:#5bc0de;
 }
 
 .list-group-item {
-background-color:transparent;
+    background-color:transparent;
 }
 
 .list-group-item img {
@@ -85,7 +85,7 @@ div.int-box {
     padding-left:5px;
 }
 
-.list-content li {
+.list-group, .list-content li {
     -webkit-box-shadow: 0 10px 10px #b0b0b0;
        -moz-box-shadow: 0 10px 10px #b0b0b0;
          -o-box-shadow: 0 10px 10px #b0b0b0;
@@ -111,5 +111,9 @@ div.int-box {
 img {
     pointer-events: none;
 }
-
+.name span {
+    float: center;
+   margin-top: 10px;
+   margin-left: 10px;
+}
 .test::-webkit-scrollbar { width: 0 !important }
