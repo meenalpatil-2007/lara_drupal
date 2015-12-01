@@ -75,7 +75,7 @@
                         @if($value->field_profile_img)
 				      		{!! $value->field_profile_img !!}
 				      	@else
-				      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($value->field_gender).'.png') !!}
+				      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($value->field_gender).'.png', 'profile', ['width' => '150px']) !!}
 				      		
 				      	@endif
                         </a>
