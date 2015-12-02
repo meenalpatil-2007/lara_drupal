@@ -12,7 +12,7 @@
 	</li>
 	<div class="test " onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
 	@foreach ($profiles as $profile)
-	  	<li  class="list-group-item text-left animate <?php echo count($profiles) >= 3 ? 'col-sm-6 col-md-4 col-lg-4' : 'col-sm-6 col-md-6 col-lg-6'; ?>">
+	  	<li  class="list-group-item text-left animate <?php echo count($profiles) >= 3 ? 'col-sm-6 col-md-3 col-lg-3' : 'col-sm-6 col-md-6 col-lg-6'; ?>">
 	      	<a href="/profile/view/<?php echo $profile['Uid']; ?>" class="name">
 	      	@if($profile['profile img'])
 	      		{!! $profile['profile img'] !!}
@@ -39,10 +39,10 @@
 	@endforeach
 	</div>
 	<li  class="list-group-item text-left">
-	    <a class="btn btn-block btn-primary" id="loadMore">
+	    <button class="btn btn-block btn-primary" id="loadMore">
 	        <i class="glyphicon glyphicon-refresh"></i>
 	        Load more...
-	    </a>
+	    </button>
 	</li>
 
 </ul>
