@@ -32,6 +32,7 @@
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block wow fadeInUp"  data-wow-delay="1s" id="signin" type="submit">Sign in</button>
+                    <button type="button" class="btn btn-lg btn-primary btn-block wow fadeInUp" data-toggle="modal" data-target="#myModal">Forgot Password?</button>          
                     <!--p><a href="#">Forgot password?</a></p-->
              
                     <!--p class="or-social">Or Use Social Login</p-->
@@ -43,5 +44,25 @@
             </div>
         </div>
     </div>
-  </section>                                
+  </section> 
+  <div id="myModal" class="modal fade in" role="dialog" aria-hidden="true">
+    
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="$('#myModal').fadeOut();">&times;</button>
+                <h4 class="modal-title">Request new password</h4>
+            </div>
+            <div class="modal-body">
+                {!! Form::open(['action' => 'UserController@postRequestNewPassword', 'class' => 'form-signin' ] ) !!}
+                    <label for="inputUsername" class="sr-only">Username</label>
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Username or Email', 'required', 'autofocus', 'id' => 'inputUsername' ]) !!}
+                    <p></p>
+                    <button class="btn btn-lg btn-primary btn-block"  id="signin" type="submit">Request</button>
+                {!! Form::close() !!}
+            </div>
+        </div>  
+    </div>    
+    
+</div>                               
 @endsection

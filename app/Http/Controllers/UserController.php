@@ -91,4 +91,15 @@ class UserController extends Controller
 		return redirect('/');
 	}
 
+	public function postRequestNewPassword(Request $request)
+	{
+		$url = $this->site_url	.'m2serve/user/request_new_password';
+		$userData = $this->request->all();
+		unset($userData['_token']);
+		$userData = ['name' => $userData['name']];
+		$result = $this->cURL($url, $userData);
+		print_r($result);die;
+		return redirect('/');
+	}
+
 }

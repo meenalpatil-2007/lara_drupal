@@ -38,7 +38,7 @@
                         </div>
              
                         <button class="btn btn-lg btn-primary btn-block wow fadeInUp"  data-wow-delay="1.2s" type="submit">Register</button>
-                 
+                        
                         <!--p class="or-social">Or Use Social Login</p>
                  
                         <a class="btn btn-lg btn-primary btn-block facebook" type="submit">Facebook</a>
@@ -47,5 +47,6 @@
                 </div>
             </div>
         </div>
-    </section>          
+
+    </section> 
 @stop
