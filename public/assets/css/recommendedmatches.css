@@ -11,12 +11,11 @@ color:#5bc0de;
   font-weight:bold;
   color:#FFFFFF;
   text-align: center;
-  overflow: hidden;
 }
 
 .test{
     max-height:290px;
-    overflow-y:scroll;
+    overflow: hidden;
 }
 
 .list-group-item {
