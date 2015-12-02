@@ -64,7 +64,7 @@ class UserController extends Controller
 		$request->session()->forget('user');
 		$request->session()->flush();
 		$request->session()->flash('message', "You have successfully logged out.");
-		return redirect('user/register');
+		return redirect('user/login');
 	}
 
 	public function getRegister() 
