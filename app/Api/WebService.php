@@ -23,6 +23,7 @@ trait WebService
 		$output = curl_exec($curl);
 		$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
+		//echo $output;die;
 		return [$http_code, $output];
     }
 

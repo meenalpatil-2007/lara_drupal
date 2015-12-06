@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
 
@@ -17,14 +15,30 @@
                 @if (Session::has('email'))
                     <li><a href="/">Home</a></li>
                     <li><a href="/profile/search">Search</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile <span class="caret"></span></a>
+                    
+                    <li class="dropdown default">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    @if(!empty($profiles[0]['show_all_profiles']))
+                        <div class="c100 p0 small ">
+                            <span>0%</span>
+
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    @endif    
+                        <span>Profile</span>
+                        <span class="caret"></span>
+                    </a>
+                        
                         <ul class="dropdown-menu " role="menu">
                             <li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','Edit Profile', 'edit') !!}</li>
 							<li class="menu-open">{!! Html::linkAction('ProfileController@getMyProfile','My Profile', 'view') !!}</li>
                             <!--li><a href="profile/">Edit Profile</a></li-->
                         </ul>
                    </li>
+
                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Session::get('email') }} <span class="caret"></span></a>
                         <ul class="dropdown-menu " role="menu">
