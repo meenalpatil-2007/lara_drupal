@@ -92,7 +92,6 @@ div.int-box {
             box-shadow: 0 10px 10px #b0b0b0;
 }
 
-
 .glyphicon-refresh-animate {
     -animation: spin 1s infinite linear;
     -webkit-animation: spin2 1s infinite linear;
@@ -117,4 +116,18 @@ img {
    margin-left: 10px;
 }
 .test::-webkit-scrollbar { width: 0 !important }
+
+a.control_prev:hover, a.control_next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+a.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+a.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
 
