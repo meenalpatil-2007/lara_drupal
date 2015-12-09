@@ -1,3 +1,4 @@
+<?php //dd($profiles[0]['show_all_profiles']); ?>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
 
@@ -18,7 +19,7 @@
                     
                     <li class="dropdown default">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    @if(!empty($profiles[0]['show_all_profiles']))
+                    @if(!empty($profiles[0]['show_all_profiles']) && $profiles[0]['show_all_profiles'] == 'true')
                         <div class="c100 p0 small ">
                             <span>0%</span>
 
