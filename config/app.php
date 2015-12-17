@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomString'),
+    'key' => env('APP_KEY', 'vuR3BDMLIrKZZgrVtNGI1EPPXkBHvKhz'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -196,6 +196,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
+		'Common'    => App\Libraries\Common::class,
     ],
 
 ];

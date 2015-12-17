@@ -120,4 +120,13 @@ class Common {
 			return years <= 1 ? "one year ago" : years + " years ago";
 		}*/
 	}
+	
+		
+	static function checkIfExist($arr, $key){
+		if(!isset($arr[$key]) || empty($arr[$key])){
+			return '';	
+		}
+			return $arr[$key];
+	}
+	
 }

@@ -14,8 +14,10 @@
 	@foreach ($profiles as $profile)
 	  	<li  class="list-group-item text-left animate <?php echo count($profiles) >= 4 ? 'col-sm-6 col-md-3 col-lg-3' : 'col-sm-6 col-md-6 col-lg-6'; ?>">
 	      	<a href="/profile/view/<?php echo $profile['Uid']; ?>" class="name">
-	      	@if($profile['profile img'])
-	      		{!! $profile['profile img'] !!}
+	      	@if(!empty($profile['profile img']))
+				
+				{!! $profile['profile img'][0] !!}
+					      		
 	      	@else
 	      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($profile['gender']).'.png', 'profile', ['typeof' => "foaf:Image", 'class' => 'img-responsive', 'width'=> '80']) !!}
 	      		

@@ -1,3 +1,21 @@
 .topp50{ padding-top:50px; }
 .align-left{float:left;}
 .align-right{float:right;}
+.carousel-inner  .item  img {
+    line-height: 1;
+    margin-left: 58px;	
+}
+	
+#img_box .carousel-inner  .item  img, .img-responsive, .thumbnail a  img, .thumbnail  img {
+    display: block;
+    max-width: 65%;
+    height: auto;
+}
+
+#img_box .carousel-control.left, .carousel-control.right {
+	background-image: linear-gradient(to right, #FFF 0px, transparent 100%);
+}
+
+#img_box .img-circle {
+    border-radius: 0%;
+}

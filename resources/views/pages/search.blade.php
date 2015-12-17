@@ -73,7 +73,7 @@
                         <span></span>
                         <a href="/profile/view/<?php echo $value->uid; ?>">
                         @if($value->field_profile_img)
-				      		{!! $value->field_profile_img !!}
+				      		{!! $value->field_profile_img[0] !!}
 				      	@else
 				      		{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower($value->field_gender).'.png', 'profile', ['width' => '150px']) !!}
 				      		

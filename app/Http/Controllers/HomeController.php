@@ -27,11 +27,13 @@ class HomeController extends Controller
 
     public function getIndex() {
     	$profiles = $this->getMatchingProfile();
+		//print_r($profiles);exit;
     	return view('pages.home', array('profiles' => $profiles));
     }
 
 
     public function getMatchingProfile () {
+		//var_dump($this->request->session()->get('service'));exit;
     	$service = $this->request->session()->get('service') ?  $this->request->session()->get('service') : 'm2serve/view_recommended_matches_service';
     	$matchingProfile = function($service) {
     		$this->url = $this->site_url	.  $service  .'?user='.$this->request->session()->get('uid');
@@ -60,5 +62,30 @@ class HomeController extends Controller
 		}
 		
 	}
+	
+	public function getProfilePic () {			
+		$this->url = 'http://drupal.dev/m2serve/profile-gallery?user='.$this->request->session()->get('uid');
+		$this->result = Common::validateCurlResponse($this->cURL($this->url, Null, $this->request->session()->get('cookie'), 'GET'));
+		if(is_object($this->result)) {
+			return $this->result;exit;
+		}
+		else {
+			
+			$output = json_decode($this->result,TRUE);
+			return $output;exit;
+		}
+	}
 
+	public function postEditGallery () {			
+		$this->url = 'http://drupal.dev/m2serve/profile-gallery?user='.$this->request->session()->get('uid');
+		$this->result = Common::validateCurlResponse($this->cURL($this->url, Null, $this->request->session()->get('cookie'), 'GET'));
+		if(is_object($this->result)) {
+			return $this->result;exit;
+		}
+		else {
+			
+			$output = json_decode($this->result,TRUE);
+			return $output;exit;
+		}
+	}
 }
