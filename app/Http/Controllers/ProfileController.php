@@ -85,18 +85,15 @@ class ProfileController extends Controller
 			$output = Common::validateCurlResponse($result);
 			//print_r($result);exit;
 			$array = json_decode($output, TRUE);
-			$arr = json_decode($array[0]);
-			//view('profile.my_profile', array('msg'=>$arr->msg));
-
-			//print_r($arr);exit;
+			$arr = json_decode($array[0]);	
 			//$request->session()->flash('message', $arr->msg);
 			$url = $this->site_url	.'/m2serve/user/logout';
-			$userData = '';	
-			$result = $this->cURL($url, $userData, $request->session()->get('cookie'));
-			
+			$result = $this->cURL($url, NULL, $request->session()->get('cookie'));		
 			$request->session()->forget('user');
 			$request->session()->flush();
-			return redirect('/');
+			$request->session()->flash('message', "Profile deactiveted successfully.");
+			return redirect('user/login');
+			
 			/////////////////////////////////////////// clear session //////////////////////////////////////////
 		}
 		else
@@ -115,7 +112,7 @@ class ProfileController extends Controller
 			$array = json_decode($output, TRUE);	
 			$arr = json_decode($array[0]);
 			//view('profile.my_profile', array('msg'=>$arr->msg));
-			//$request->session()->flash('message', $arr->msg);
+			$request->session()->flash('message', 'Profile updated successfully');
 			return Redirect::action('ProfileController@getMyProfile', 'view');
 			//return Redirect::back()->withErrors(['msg', $arr->msg]);
 		}
