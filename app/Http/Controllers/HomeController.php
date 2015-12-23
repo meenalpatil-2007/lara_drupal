@@ -64,7 +64,7 @@ class HomeController extends Controller
 	}
 	
 	public function getProfilePic () {			
-		$this->url = 'http://drupal.dev/m2serve/profile-gallery?user='.$this->request->session()->get('uid');
+		$this->url = $this->site_url.'/m2serve/profile-gallery?user='.$this->request->session()->get('uid');
 		$this->result = Common::validateCurlResponse($this->cURL($this->url, Null, $this->request->session()->get('cookie'), 'GET'));
 		if(is_object($this->result)) {
 			return $this->result;exit;
@@ -79,7 +79,7 @@ class HomeController extends Controller
 	public function getEditGallery () {
 		//return "xxxxxxxxxxxx"; exit;
 		return $datax = $this->request->get('action');exit;
-		$this->url = 'http://drupal.dev/m2serve/editProfilePics/retrieve?user='.$this->request->session()->get('uid');
+		$this->url = $this->site_url.'/m2serve/editProfilePics/retrieve?user='.$this->request->session()->get('uid');
 		$this->result = Common::validateCurlResponse($this->cURL($this->url, Null, $this->request->session()->get('cookie'), 'GET'));
 		if(is_object($this->result)) {
 			return $this->result;exit;
