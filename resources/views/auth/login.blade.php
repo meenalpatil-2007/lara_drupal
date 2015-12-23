@@ -32,7 +32,7 @@
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block wow fadeInUp"  data-wow-delay="1s" id="signin" type="submit">Sign in</button>
-                    <button type="button" class="btn btn-lg btn-primary btn-block wow fadeInUp" data-toggle="modal" data-target="#myModal">Forgot Password?</button>          
+                    <!--button type="button" class="btn btn-lg btn-primary btn-block wow fadeInUp" data-toggle="modal" data-target="#myModal">Forgot Password?</button-->          
                     <!--p><a href="#">Forgot password?</a></p-->
              
                     <!--p class="or-social">Or Use Social Login</p-->
@@ -45,7 +45,7 @@
         </div>
     </div>
 </section> 
-  <div id="myModal" class="modal fade in" role="dialog" aria-hidden="true">
+  <!--div id="myModal" class="modal fade in" role="dialog" aria-hidden="true">
     
     <div class="modal-dialog">
         <div class="modal-content">
@@ -64,5 +64,5 @@
         </div>  
     </div>    
     
-</div>                               
+</div-->                               
 @endsection

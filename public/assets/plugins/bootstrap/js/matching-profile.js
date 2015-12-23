@@ -55,22 +55,32 @@ $( document ).ready(function() {
 		
 			if(res[0] == 'remove'){
 				if (confirm('do you want to remove this image from gallery ?')) {
-					return true;
+					ajaxCall(res[1], 'remove');
+					//alert(res[0]);
 				} else {
+					alert("else");
 					return false;
 				}
 			}
-			alert(res[0]);
-		$.ajax({
-			type: "POST",
-			url: "/edit-gallery",
-			data: { 'fid': res[1] , 'action': res[0]},
-			success: function(data) {
-				var htmlData="";
-				$('#uploadImg').html(htmlData);
-			},
-		});
+			
+		
 	});
 	
 	
 });
+
+
+function ajaxCall(fid, task){
+	alert(fid + '=---= ' + task);
+	$.ajax({
+		type: "get",
+		url: "/edit-gallery",
+		data: { 'fid': fid , 'action': task},
+		success: function(data) {
+			alert(data);
+			var htmlData="";
+			$('#uploadImg').html(htmlData);
+		},
+	});
+	
+}

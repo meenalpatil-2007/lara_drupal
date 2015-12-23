@@ -77,9 +77,9 @@ class ProfileController extends Controller
 		//print_r($data);exit;
 
 		if($data['action'] == 'Delete'){
-			//$userData['uid'] = 5;
+			
 			$userData = "";
-			$url = 'http://drupal-7.41.dev/m2serve/editProfile/retrieve?uid='.$this->request->session()->get('uid');
+			$url = $this->site_url	.'/m2serve/editProfile/retrieve?uid='.$this->request->session()->get('uid');
 			$cookie = "";
 			$result = $this->cURL($url, $userData, $cookie, 'GET');	
 			$output = Common::validateCurlResponse($result);
@@ -100,26 +100,21 @@ class ProfileController extends Controller
 			/////////////////////////////////////////// clear session //////////////////////////////////////////
 		}
 		else
-		{
-			
+		{			
 			$age = $this->getAgeValue($data['birth_date'], '%y');
 			$userData = ['uid' => $this->request->session()->get('uid'), 'field_age' => $age];
-			//$userData['action'] = 'Update';
-				
+							
 			$url = $this->site_url	.'/m2serve/editProfile';			
 			foreach ($data as $key => $value) {			
 				$userData['field_'.$key] = $value;			
 			}
-			//print_r($userData);exit;
 			$cookie = "";
 			$result = $this->cURL($url, $userData, $cookie);	
 			$output = Common::validateCurlResponse($result);
-			//var_dump($result);exit;
+			//print_r($result);exit;
 			$array = json_decode($output, TRUE);	
 			$arr = json_decode($array[0]);
 			//view('profile.my_profile', array('msg'=>$arr->msg));
-
-			//print_r($arr);exit;
 			//$request->session()->flash('message', $arr->msg);
 			return Redirect::action('ProfileController@getMyProfile', 'view');
 			//return Redirect::back()->withErrors(['msg', $arr->msg]);
@@ -155,6 +150,7 @@ class ProfileController extends Controller
 			return $output;
 		} else {
 			$array = json_decode($output,TRUE);
+			//print_r($array);exit;
 			if(isset($array[0]))
 				return view('profile.my_profile', array('item'=>$array[0]));
 			else 
