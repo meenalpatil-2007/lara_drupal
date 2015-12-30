@@ -228,25 +228,29 @@
 	</div>
 </div>
 
-
-  <div id="editImg" class="modal fade in" role="dialog" aria-hidden="true">
-    
+<div id="editImg" class="modal fade in" role="dialog" aria-hidden="true">    
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" onclick="$('#editImg').fadeOut();">&times;</button>
                 <h4 class="modal-title">Edit Image Gallery</h4>
             </div>
-            <div class="modal-body">
-                {!! Form::open(['action' => 'ProfileController@postEditProfileImg', 'class' => 'form-signin' ] ) !!}
-					{!! Form::text('uid', Common::checkIfExist($item, 'User uid'), ['class' => 'hidden']) !!}
-				<div id="uploadImg">
-					
+			<div class="container">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="modal-body">
+					<?php $count=1; ?>
+						{!! Form::open(['action' => 'ProfileController@postEditProfileImg', 'class' => 'form-signin' ] ) !!}
+							{!! Form::text('uid', Common::checkIfExist($item, 'User uid'), ['class' => 'hidden']) !!}
+							{!! Form::text('count', $count, ['class' => 'hidden']) !!}
+							
+						<div id="uploadImg">
+							
+							</div>
+							<button class="btn btn-lg btn-primary btn-block"  id="addImg" type="button">Add Image</button>
+						{!! Form::close() !!}
 					</div>
-					<button class="btn btn-lg btn-primary btn-block"  id="addImg" type="button">Add Image</button>
-                {!! Form::close() !!}
-            </div>
+				</div>
+			</div>
         </div>  
     </div>    
-    
-</div>  
+</div> 

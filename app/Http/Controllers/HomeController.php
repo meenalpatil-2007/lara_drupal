@@ -78,8 +78,23 @@ class HomeController extends Controller
 
 	public function getEditGallery () {
 		//return "xxxxxxxxxxxx"; exit;
-		return $datax = $this->request->get('action');exit;
-		$this->url = $this->site_url.'/m2serve/editProfilePics/retrieve?user='.$this->request->session()->get('uid');
+		//return $datax = $this->request->get('action');exit;
+		$this->url = $this->site_url.'/m2serve/editProfilePics/retrieve?user='.$this->request->session()->get('uid').'&fid='.$this->request->get('fid').'&action='.$this->request->get('action');
+		$this->result = Common::validateCurlResponse($this->cURL($this->url, Null, $this->request->session()->get('cookie'), 'GET'));
+		//print_r($this->result);exit;
+		if(is_object($this->result)) {
+			return $this->result;exit;
+		}
+		else {
+			
+			//$output = json_decode($this->result,TRUE);
+			return true;exit;
+		}
+	}
+	
+	public function getAddToGallery () {
+		return $this->request->get('filename'); exit;
+		$this->url = $this->site_url.'/m2serve/editProfilePics?user='.$this->request->session()->get('uid');
 		$this->result = Common::validateCurlResponse($this->cURL($this->url, Null, $this->request->session()->get('cookie'), 'GET'));
 		if(is_object($this->result)) {
 			return $this->result;exit;
@@ -90,4 +105,41 @@ class HomeController extends Controller
 			return $output;exit;
 		}
 	}
+		
+	public function getSendInterest () {
+		//return $this->request->get('interest_to'); exit;
+		$this->url = $this->site_url.'/m2serve/expressInterest';
+		$userData['user'] = $this->request->session()->get('uid');
+		$userData['interest_to'] = $this->request->get('interest_to');
+		$userData['interest_flag'] = '';
+		$this->result = Common::validateCurlResponse($this->cURL($this->url, $userData, Null, 'POST'));
+		//print_r($this->result);exit;
+		if(is_object($this->result)) {
+			return $this->result;exit;
+		}
+		else {			
+			$output = json_decode($this->result,TRUE);
+			
+			return $output;exit;
+		}
+	}
+	
+	public function getCheckInterest () {
+		
+		$this->url = $this->site_url.'/m2serve/expressInterest';
+		$userData['user'] = $this->request->session()->get('uid');
+		$userData['interest_to'] = $this->request->get('interest_to');
+		$userData['interest_flag'] = 'check';
+		$this->result = Common::validateCurlResponse($this->cURL($this->url, $userData, Null, 'POST'));
+		//print_r($this->result);exit;
+		if(is_object($this->result)) {
+			return $this->result;exit;
+		}
+		else {			
+			$output = json_decode($this->result,TRUE);
+			
+			return $output;exit;
+		}
+	}
+	
 }

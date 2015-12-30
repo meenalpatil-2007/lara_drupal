@@ -1,4 +1,7 @@
 $( document ).ready(function() {
+	
+	checkInterestExpressed();
+	
 	var myApp;
 	myApp = myApp || (function () {
 		return {
@@ -26,14 +29,81 @@ $( document ).ready(function() {
 		});
 	});
 
-	$(document).on('click', "#addImg", function () {	
-		$('#uploadImg').append("<input type='file' />");		
+	$(document).on('click', "#addImg", function () {
+		count = $('input:text[name=count]').val();
+		//alert('img'+ count);
+		$('#uploadImg').append("<div class='row'><div id='targetLayer'>No Image</div><input type='file' id='imgProfile' name='img"+ count +"' /><button class='btn btn-secondary' id='imgUpload' name='imgUpload_"+ count +"' >Upload</button></div>");
+		count++;
+		$('input:text[name=count]').val(count);
+	});
+	
+	$(document).on('click', "#imgUpload", function () {	
+		var file = $('#imgProfile').val();
+		var name = this.getAttribute('name');
+		
+		//e.preventDefault();
+		$.ajax({
+        	url: '/add-to-gallery',
+			type: 'GET',
+			data:  {'filename': file},
+			success: function(data)
+		    {
+				alert(data);
+			$("#targetLayer").html(data);
+		    },
+		  	error: function() 
+	    	{
+	    	} 	        
+	   });
+			
+	});	
+	
+	$(document).on('click', "#profilePic", function () {
+		getProfileGalleryAjax();
+	});
+	
+	$(document).on('change', "#fid", function () {
+		var str = this.value;	
+		var res = str.split("_");
+		
+			if(res[0] == 'remove'){
+				if (confirm('do you want to remove this image from gallery ?')) {
+					ajaxCall(res[1], 'remove', '/edit-gallery', '#uploadImg');
+					//alert(res[0]);
+				} else {
+					alert("else");
+					return false;
+				}
+			}
+			
+		
 	});
 	
 	
+	$(document).on('click', "#expressInterest", function () {	
+		var interest_to = $('input:text[name=profile_uid]').val();
+		//alert(interest_to);
+		if (confirm('do you want to express interest ?')) {
+			$.ajax({
+				type: "GET",
+				url: '/send-interest',
+				data: { 'interest_to': interest_to},
+				success: function(data) {
+					//alert(data);
+					var htmlData="";
+					$('#expressInterest').html('Interest Sent');
+				},
+			});
+		} else {
+			return false;
+		}				
+	});
 	
-	$(document).on('click', "#profilePic", function () {
-		$.ajax({
+});
+
+function getProfileGalleryAjax() {
+	
+	$.ajax({
 			type: "GET",
 			url: "/profile-pic",
 			success: function(data) {
@@ -47,40 +117,39 @@ $( document ).ready(function() {
 				alert("some error");
 			}*/
 		});
-	});
 	
-	$(document).on('change', "#fid", function () {
-		var str = this.value;	
-		var res = str.split("_");
-		
-			if(res[0] == 'remove'){
-				if (confirm('do you want to remove this image from gallery ?')) {
-					ajaxCall(res[1], 'remove');
-					//alert(res[0]);
-				} else {
-					alert("else");
-					return false;
-				}
-			}
-			
-		
-	});
-	
-	
-});
+}
 
-
-function ajaxCall(fid, task){
-	alert(fid + '=---= ' + task);
+function ajaxCall(fid=null, task=null, uri, divId){
+	//alert('xxxxxxx');
 	$.ajax({
-		type: "get",
-		url: "/edit-gallery",
+		type: "GET",
+		url: uri,
 		data: { 'fid': fid , 'action': task},
 		success: function(data) {
-			alert(data);
+			//alert(data);
 			var htmlData="";
-			$('#uploadImg').html(htmlData);
+			$(divId).html(htmlData);
 		},
 	});
 	
 }
+
+function checkInterestExpressed(){
+	var interest_to = $('input:text[name=profile_uid]').val();
+	$.ajax({
+		type: "GET",
+		url: '/check-interest',
+		data: { 'interest_to': interest_to},
+		success: function(data) {
+			alert(data);
+			
+			if(!data){
+				$('#expressInterest').html('Interest Sent');		
+			}								
+		},
+	});
+	
+}
+
+

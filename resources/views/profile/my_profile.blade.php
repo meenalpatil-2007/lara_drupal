@@ -2,6 +2,7 @@
 
 @section('content')
 {!! Html::style('/assets/css/style.css') !!}
+{!! Html::script('/assets/plugins/bootstrap/js/matching-profile.js') !!}
 <?php //echo "<pre>"; print_r($item); exit; ?>
     <!-- Sneha's Style css -->
 
@@ -43,11 +44,17 @@
 							@endif															
 							
 							</div>
+							{!! Form::text('profile_uid', Common::checkIfExist($item, 'User uid'), ['class' => 'hidden']) !!}
 						</div>
 						<div class="col-sm-6 col-md-6 col-lg-6">			
 							<h3>{{  Common::checkIfExist($item, 'first name') }}&nbsp;{{  Common::checkIfExist($item, 'last name') }}</h3>	
 							<b>About me</b>&nbsp;:&nbsp; {!! wordwrap(Common::checkIfExist($item, 'about me'), 50, "\n", true) !!}</br>
 							<b>Gender</b>&nbsp;:&nbsp; {{  Common::checkIfExist($item, 'gender') }}
+							<br/><br/>
+							@if(Session::get('uid') != $item['User uid'])
+								<button class="btn btn-primary"  id="expressInterest" type="button">Express Interest</button>
+								<button class="btn btn-primary"  id="shortlist" type="button">ShortList</button>
+							@endif
 						</div>
 					</div>
  			</div>

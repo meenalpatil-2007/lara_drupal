@@ -19,3 +19,14 @@
 #img_box .img-circle {
     border-radius: 0%;
 }
+
+
+#uploadImg input[type="file"] {
+    display: inline-block;
+}
+
+#targetLayer {
+	display: inline-block;
+	width: 30%;
+	height: 30%;
+}
