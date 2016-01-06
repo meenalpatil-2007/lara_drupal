@@ -14,8 +14,8 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 @if (Session::has('email'))
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/profile/search">Search</a></li>
+                    <li><a href="{{ URL::to('/') }}">Home</a></li>
+                    <li><a href="{{ URL::to('/profile/search') }}">Search</a></li>
                     
                     <li class="dropdown default">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

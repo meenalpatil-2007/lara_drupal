@@ -22,7 +22,7 @@ $( document ).ready(function() {
 		myApp.showPleaseWait();
 		$.ajax({
 			type: "GET",
-			url: "/matching-profile",
+			url: "matching-profile",
 		}).done(function(data) {
 			$('.list-content').html(data);
 			myApp.hidePleaseWait();

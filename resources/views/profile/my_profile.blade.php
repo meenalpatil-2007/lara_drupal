@@ -14,7 +14,7 @@
 					<div class="panel-body">
 						<div class="col-sm-6 col-md-6 col-lg-6">
 							<div id="img_box" class="img-responsive">
-							@if($item['field_profile_img'])	
+							@if(!empty($item['field_profile_img']))	
 							 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 								<div class="carousel-inner" role="listbox">
 								
@@ -39,7 +39,7 @@
 									</a>
 								  </div>
 							@else
-									{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower(Common::checkIfExist($item, 'gender')).'.png', 'profile', ['typeof' => "foaf:Image", 'class' => 'img-responsive', 'width'=> '80']) !!}
+									{!! Html::image('/assets/plugins/bootstrap/img/'.strtolower(Common::checkIfExist($item, 'gender')).'.png', 'profile', ['typeof' => "foaf:Image", 'class' => 'img-responsive', 'width'=> '100']) !!}
 									
 							@endif															
 							
@@ -110,10 +110,10 @@
 						</div>
 					</div>
  			</div>
-
+ 			</div>
  
- 
+ </div>
+</div>
  
 @endsection
-</div>
-</div>
+

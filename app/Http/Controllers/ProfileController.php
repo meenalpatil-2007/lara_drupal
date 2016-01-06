@@ -50,7 +50,7 @@ class ProfileController extends Controller
 		$userDate='';
  		$result = $this->cURL($url, $userDate, $this->request->session()->get('cookie'), 'GET');	
  		$output = Common::validateCurlResponse($result);
- 		
+ 		//print_r($result);exit;
  		if(is_object($output)) {
  			return $output;
  		} else {
