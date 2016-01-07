@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 	
-	//checkInterestExpressed();
+	checkInterestExpressed();
 	
 	var myApp;
 	myApp = myApp || (function () {
@@ -48,7 +48,7 @@ $( document ).ready(function() {
 			data:  {'filename': file},
 			success: function(data)
 		    {
-				alert(data);
+				///alert(data);
 			$("#targetLayer").html(data);
 		    },
 		  	error: function() 
@@ -71,7 +71,7 @@ $( document ).ready(function() {
 					ajaxCall(res[1], 'remove', '/edit-gallery', '#uploadImg');
 					//alert(res[0]);
 				} else {
-					alert("else");
+					//alert("else");
 					return false;
 				}
 			}
@@ -142,7 +142,7 @@ function checkInterestExpressed(){
 		url: '/check-interest',
 		data: { 'interest_to': interest_to},
 		success: function(data) {
-			alert(data);
+			//alert(data);
 			
 			if(!data){
 				$('#expressInterest').html('Interest Sent');		
