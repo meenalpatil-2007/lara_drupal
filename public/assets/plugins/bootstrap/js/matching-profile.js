@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 	
-	checkInterestExpressed();
+	//checkInterestExpressed();
 	
 	var myApp;
 	myApp = myApp || (function () {
